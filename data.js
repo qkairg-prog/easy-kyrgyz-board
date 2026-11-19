@@ -10,7 +10,7 @@ window.EK = {
   iteration: { n: 1, date: "19.11.2026" },
 
   /* блоки главной: false — блок в архиве (скрыт, но код и данные сохранены); true — показать снова */
-  sections: { concept: false, questions: false },
+  sections: { concept: false, questions: false, stats: false },
 
   stats: [
     { v: "23", t: "экрана в драфте" },

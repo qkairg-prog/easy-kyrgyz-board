@@ -24,6 +24,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{background:var(--paper);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.5;font-weight:420;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--paper)}
@@ -150,8 +151,8 @@ details[open] .pm{transform:rotate(45deg);background:var(--on-dark);color:var(--
 .acc .chips{display:flex;flex-wrap:wrap;gap:6px}
 .acc .chips span{font-size:12px;border:1px solid var(--dark-line);border-radius:999px;padding:5px 11px;color:var(--on-dark)}
 .acc .shots{grid-column:3;display:flex;gap:10px;justify-content:flex-end}
-.acc .shots .s{width:min(140px,30%);aspect-ratio:590/1278;border-radius:16px;overflow:hidden;background:#fff;padding:4px}
-.acc .shots .s img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.acc .shots .s{position:relative;flex:0 0 auto;width:min(140px,30%);min-width:0;aspect-ratio:590/1278;border-radius:16px;overflow:hidden;background:#fff}
+.acc .shots .s img{position:absolute;inset:4px;width:calc(100% - 8px);height:calc(100% - 8px);max-width:none;object-fit:cover;border-radius:12px}
 .st{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:550}
 .st::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
 .st-done{color:#38B26A}.st-wip{color:#E0A100}.st-idea{color:#9B83E6}
@@ -228,18 +229,18 @@ details[open] .pm{transform:rotate(45deg);background:var(--on-dark);color:var(--
 .flow-h h3{font-size:clamp(20px,1.8vw,24px);letter-spacing:-.03em}
 .flow-h span{font-size:12.5px;color:var(--ink-2)}
 .flow-strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--card-2) transparent;padding-bottom:4px}
-.shot{flex:0 0 clamp(148px,14vw,196px);display:flex;flex-direction:column;gap:10px;scroll-snap-align:start;background:none;border:0;padding:0;text-align:left;cursor:zoom-in}
-.shot .ph{background:#fff;border-radius:20px;padding:5px;aspect-ratio:590/1278;transition:transform .25s ease}
+.shot{flex:0 0 auto;width:clamp(148px,14vw,196px);min-width:0;max-width:100%;display:flex;flex-direction:column;gap:10px;scroll-snap-align:start;background:none;border:0;padding:0;text-align:left;cursor:zoom-in}
+.shot .ph{display:block;position:relative;width:100%;background:#fff;border-radius:20px;aspect-ratio:590/1278;overflow:hidden;transition:transform .25s ease}
 .shot:hover .ph{transform:translateY(-3px)}
-.shot .ph img{width:100%;height:100%;object-fit:cover;border-radius:16px}
+.shot .ph img{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px);max-width:none;object-fit:cover;border-radius:16px}
 .shot .cap{font-size:13px;font-weight:550;line-height:1.3}
 .shot .cap span{display:block;font-size:11.5px;color:var(--ink-3);font-weight:500}
 
 dialog.lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%}
 dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
 .lb-in{height:100%;display:grid;grid-template-columns:auto minmax(0,auto) minmax(0,340px) auto;align-items:center;justify-content:center;gap:24px;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px))}
-.lb-img{height:min(86vh,900px);aspect-ratio:590/1278;max-width:100%;border-radius:36px;background:#fff;padding:8px}
-.lb-img img{width:100%;height:100%;object-fit:contain;border-radius:29px}
+.lb-img{position:relative;height:min(86vh,900px);height:min(86svh,900px);aspect-ratio:590/1278;max-width:100%;border-radius:36px;background:#fff;overflow:hidden}
+.lb-img img{position:absolute;inset:8px;width:calc(100% - 16px);height:calc(100% - 16px);max-width:none;object-fit:contain;border-radius:29px}
 .lb-txt{color:#fff;display:flex;flex-direction:column;gap:12px}
 .lb-txt .br{color:rgba(255,255,255,.6)}
 .lb-txt h3{font-size:28px;letter-spacing:-.03em}
@@ -247,7 +248,7 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
 .lb-nav{width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-size:20px;cursor:pointer}
 .lb-nav:hover{background:rgba(255,255,255,.12)}
 .lb-close{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px));width:46px;height:46px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:20px;cursor:pointer}
-@media (max-width:860px){.lb-in{grid-template-columns:auto minmax(0,1fr) auto;align-content:center;gap:14px}.lb-img{height:62vh;justify-self:center}.lb-txt{grid-column:1/-1;grid-row:2;text-align:center;align-items:center}.lb-txt h3{font-size:22px}.lb-nav{width:42px;height:42px}}
+@media (max-width:860px){.lb-in{grid-template-columns:auto minmax(0,1fr) auto;align-content:center;gap:14px}.lb-img{height:62vh;height:62svh;justify-self:center}.lb-txt{grid-column:1/-1;grid-row:2;text-align:center;align-items:center}.lb-txt h3{font-size:22px}.lb-nav{width:42px;height:42px}}
 
 /* ===== style ===== */
 .sg{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:10px}
@@ -365,7 +366,7 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
     <p class="manifest">Мы учим кыргызскому не через зубрёжку, а через путешествие<span class="sl">/</span><span class="g">ученик проходит регионы страны, обустраивает свой жайлоо и возвращается завтра, потому что ему интересно.</span></p>
   </section>
 
-  <div class="bento">
+  <div class="bento" data-sec="stats">
     <div class="bx">
       <div class="thumbs" id="thumbs"></div>
       <div><div class="k">Экранов в драфте</div><div class="big num" style="margin-top:8px">23</div></div>
@@ -519,7 +520,7 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
   <button class="lb-close" id="lbClose" aria-label="Закрыть">×</button>
   <div class="lb-in">
     <button class="lb-nav" id="lbPrev" aria-label="Предыдущий экран">←</button>
-    <div class="lb-img"><img id="lbImg" alt=""></div>
+    <div class="lb-img"><img id="lbImg" width="590" height="1278" alt=""></div>
     <div class="lb-txt"><span class="br" id="lbGroup"></span><h3 id="lbTitle"></h3><p id="lbDesc"></p></div>
     <button class="lb-nav" id="lbNext" aria-label="Следующий экран">→</button>
   </div>
@@ -563,7 +564,7 @@ $("#acc").innerHTML = D.map.children.map((b, i) => {
   const meta = count ? `${count} ${count === 1 ? "экран" : count < 5 ? "экрана" : "экранов"}` : `${b.children.length} пункта`;
   return `<details${i === 0 ? " open" : ""}><summary><span class="no num">/${String(i + 1).padStart(2, "0")}</span><span class="ttl"><i style="background:${b.color}"></i>${esc(b.label)}</span><span class="meta">${meta}${st(b.status)}</span><span class="pm">${PLUS}</span></summary>
   <div class="body"><div class="txt"><p>${esc(b.desc)}</p><div class="chips">${b.children.map(c => `<span>${esc(c.label)}</span>`).join("")}</div><a class="pill pill-light" style="align-self:flex-start" href="map.html#${b.key}">Открыть на карте ${ARR}</a></div>
-  <div class="shots">${shots.map(c => `<div class="s"><img loading="lazy" src="${c.img}" alt="${esc(c.label)}"></div>`).join("")}</div></div></details>`;
+  <div class="shots">${shots.map(c => `<div class="s"><img loading="lazy" width="590" height="1278" src="${c.img}" alt="${esc(c.label)}"></div>`).join("")}</div></div></details>`;
 }).join("");
 
 /* regions showcase */
@@ -594,7 +595,7 @@ $("#flows").innerHTML = D.screenFlows.map(f => {
   const range = `${String(f.nos[0]).padStart(2, "0")}–${String(f.nos[f.nos.length - 1]).padStart(2, "0")}`;
   return `<div class="flow"><div class="flow-h"><h3>${esc(f.t)}</h3><span class="num">Экраны ${range}</span></div><div class="flow-strip">${items.map(c => {
     const [no, ...r] = c.label.split(" · ");
-    return `<button class="shot" data-no="${parseInt(no)}"><span class="ph"><img loading="lazy" src="${c.img}" alt="${esc(c.label)}"></span><span class="cap"><span>${esc(no)}</span>${esc(r.join(" · "))}</span></button>`;
+    return `<button class="shot" data-no="${parseInt(no)}"><span class="ph"><img loading="lazy" width="590" height="1278" src="${c.img}" alt="${esc(c.label)}"></span><span class="cap"><span>${esc(no)}</span>${esc(r.join(" · "))}</span></button>`;
   }).join("")}</div></div>`;
 }).join("");
 
