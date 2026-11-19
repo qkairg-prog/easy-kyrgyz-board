@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Easy Kyrgyz · Проектная доска</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+@font-face{font-family:"Medeo Sans";src:url("fonts/MedeoSansVariable.latin.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0300-0304, U+0306-030D, U+0312-0313, U+031B, U+0323, U+0326-0329, U+0330-0331, U+0335-0338, U+1DC4-1DC7, U+2007, U+2009, U+200B-200D, U+2011, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2028-2029, U+202F-2030, U+2032-2033, U+2039-203A, U+2044, U+20AC, U+2122, U+2191, U+2193, U+2212}
+@font-face{font-family:"Medeo Sans";src:url("fonts/MedeoSansVariable.latin-ext.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+0100-0137, U+0139-013E, U+0141-0148, U+014A-017E, U+0181, U+0186, U+0189-018A, U+018E-0192, U+0194, U+0196-0199, U+019D, U+01A0-01A1, U+01AF-01B4, U+01CD-01DD, U+01E4-01E9, U+01F8-01F9, U+0218-021B, U+0237, U+0244-0245, U+0253-0254, U+0256-0257, U+0259, U+025B, U+0263, U+0268-0269, U+0272, U+0289-028C, U+0294, U+02B9, U+02C7-02C8, U+02DD, U+0300-0304, U+0306-030D, U+0312-0313, U+031B, U+0323, U+0326-0329, U+0330-0331, U+0335-0338, U+1DC4-1DC7, U+1E04-1E05, U+1E0C-1E0D, U+1E1E-1E21, U+1E24-1E25, U+1E36-1E37, U+1E3E-1E3F, U+1E42-1E47, U+1E5A-1E5B, U+1E62-1E63, U+1E6C-1E6D, U+1E78-1E79, U+1E7E-1E85, U+1E92-1E93, U+1E9E, U+1EF2-1EF9, U+2020, U+20AA, U+20B1, U+20B4, U+20B8-20BA, U+20BC-20BF, U+A78B-A78C}
+@font-face{font-family:"Medeo Sans";src:url("fonts/MedeoSansVariable.cyrillic.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+0300-0304, U+0306-030D, U+0312-0313, U+031B, U+0323, U+0326-0329, U+0330-0331, U+0335-0338, U+0400-045F, U+0490-0493, U+049A-049B, U+04A2-04A3, U+04AE-04B1, U+04BA-04BB, U+04D8-04D9, U+04E8-04E9, U+1DC4-1DC7, U+2116}
+@font-face{font-family:"Medeo Sans";src:url("fonts/MedeoSansVariable.cyrillic-ext.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+0300-0304, U+0306-030D, U+0312-0313, U+031B, U+0323, U+0326-0329, U+0330-0331, U+0335-0338, U+0462-0463, U+046A-046B, U+0472-0475, U+0494-0499, U+049C-04A1, U+04A4-04AD, U+04B2-04B9, U+04BC-04C4, U+04C7-04C8, U+04CB-04CC, U+04CF-04D7, U+04DA-04E7, U+04EA-04F9, U+0512-0513, U+0524-0525, U+1DC4-1DC7, U+20B4}
+@font-face{font-family:"Medeo Sans";src:url("fonts/MedeoSansVariable.symbols.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+02D8-02D9, U+02DB, U+039B, U+03A9, U+03BB-03BC, U+03C0, U+0E3F, U+2070, U+2074-2079, U+2080-2089, U+20C5, U+2117, U+2126, U+2153-2155, U+215B-215E, U+2190, U+2192, U+2194-2199, U+219D, U+21A9-21AA, U+21B0-21B1, U+21B3-21B5, U+21E4-21E5, U+21E7, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2236, U+2248, U+2260, U+2264-2265, U+2460-2468, U+24EA, U+24FF, U+25B2-25B3, U+25B6-25B7, U+25BC-25BD, U+25C0-25C1, U+25CA-25CC, U+25CF, U+2605, U+2639-263A, U+2713-2714, U+2776-277E, U+3003, U+301C, U+F8FF, U+FB01-FB02}
+/* Layout: Lumóra-style studio page. White paper, light-grey rounded cards, ink type at medium weight with tight tracking.
+   Colour comes only from the app's own illustrations (cream islands) and region tones; kyzyl red is reserved for the ® mark and tiny accents.
+   One dark block (structure accordion) and a dark footer card, as in the reference. */
+:root{
+  --paper:#FFFFFF; --card:#F3F2EF; --card-2:#EAE8E3; --cream:#F7F0E3;
+  --ink:#111111; --ink-2:#5F5D5A; --ink-3:#9A9793; --line:#E4E2DD;
+  --dark:#111111; --dark-2:#1D1D1C; --dark-line:#2C2B2A; --on-dark:#F4F3F0; --on-dark-2:#9C9A96;
+  --kyzyl:#D7263D;
+  --f:"Medeo Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --r-xl:28px; --r-lg:22px; --r-md:16px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--paper);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.5;font-weight:420;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--paper)}
+h1,h2,h3,p,figure{margin:0}
+h1,h2,h3{font-weight:500;text-wrap:balance}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1400px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.num{font-variant-numeric:tabular-nums}
+.tag{font-size:11.5px;font-weight:550;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);display:inline-flex;align-items:center;gap:10px}
+.tag::before{content:"";width:16px;height:1px;background:currentColor}
+.br{font-size:11.5px;font-weight:550;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.reg{font-size:.38em;vertical-align:.95em;margin-left:.04em;letter-spacing:0;color:var(--kyzyl);font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;font-size:13px;font-weight:550;white-space:nowrap;border:1px solid var(--line);background:var(--paper)}
+.pill-dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pill-dark:hover{background:#000}
+.pill-light{background:#fff;color:var(--ink);border-color:#fff}
+.arr{width:12px;height:12px;flex:none}
+
+/* ===== nav ===== */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+.nav .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:64px;gap:16px}
+.logo{font-weight:550;font-size:16px;letter-spacing:-.02em;white-space:nowrap}
+.logo sup{font-size:9px;color:var(--kyzyl);margin-left:1px}
+.menu{display:flex;align-items:center;gap:18px;font-size:13.5px;font-weight:500}
+.menu a{color:var(--ink);white-space:nowrap}
+.menu a:hover{color:var(--ink-3)}
+.menu i{font-style:normal;color:var(--ink-3);font-weight:400}
+.nav-r{justify-self:end;display:flex;align-items:center;gap:14px;font-size:13.5px;font-weight:550}
+.burger{width:28px;display:flex;flex-direction:column;gap:6px}
+.burger span{height:1.5px;background:var(--ink)}
+.burger span:last-child{width:70%;margin-left:auto}
+@media (max-width:980px){.nav .wrap{grid-template-columns:1fr auto}.menu{display:none}}
+
+/* ===== hero ===== */
+.hero{background:var(--card);border-radius:var(--r-xl);padding:clamp(18px,2.4vw,32px);margin-top:4px}
+.hero-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,300px);gap:20px 40px;align-items:start;padding:clamp(4px,1vw,12px) clamp(4px,1vw,12px) clamp(18px,2.4vw,30px)}
+.wordmark{font-size:clamp(54px,10.6vw,168px);line-height:.88;letter-spacing:-.055em;font-weight:500;white-space:nowrap}
+.hero-aside{padding-top:clamp(4px,1.6vw,26px);display:flex;flex-direction:column;gap:14px}
+.who{display:flex;align-items:center;gap:10px}
+.who .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none}
+.who .ln{height:1px;width:34px;background:var(--ink)}
+.who .avs{display:flex}
+.who .avs i{width:22px;height:22px;border-radius:50%;border:2px solid var(--card);margin-left:-6px}
+.who .avs i:first-child{margin-left:0}
+.hero-aside p{font-size:14px;color:var(--ink-2);line-height:1.5}
+.hero-card{position:relative;background:var(--cream);border-radius:var(--r-lg);overflow:hidden;aspect-ratio:1336/560;min-height:340px}
+.hero-card .isl{position:absolute;right:-2%;top:50%;transform:translateY(-50%);height:118%;width:auto;max-width:none}
+.hero-card .cap{position:absolute;left:clamp(18px,2.4vw,32px);bottom:clamp(18px,2.4vw,30px);right:clamp(18px,2.4vw,32px);display:flex;flex-direction:column;gap:18px;pointer-events:none}
+.hero-card .cap p{font-size:14px;line-height:1.45;max-width:30ch;color:var(--ink)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;font-weight:550;color:var(--ink)}
+.tabs span{display:inline-flex;align-items:center;gap:7px;opacity:.78}
+.tabs svg{width:18px;height:18px}
+.float{position:absolute;right:clamp(14px,2vw,26px);bottom:clamp(14px,2vw,26px);width:clamp(180px,17vw,230px);display:flex;flex-direction:column;gap:6px;z-index:2}
+.float .ph{background:#fff;border-radius:16px;padding:6px;aspect-ratio:1/0.82;overflow:hidden}
+.float .ph img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:11px}
+.float .lab{background:#fff;border-radius:14px;padding:10px 12px;display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:12.5px;line-height:1.3}
+.float .lab b{font-weight:550}
+.float .lab span{color:var(--ink-2)}
+.float .lab .arr{grid-row:1;grid-column:2}
+@media (max-width:860px){
+  .hero-top{grid-template-columns:1fr}
+  .wordmark{white-space:normal}
+  .hero-card{aspect-ratio:auto;height:560px}
+  .hero-card .isl{height:auto;width:150%;right:-28%;top:4%;transform:none}
+  .float{display:none}
+}
+
+/* ===== about ===== */
+.about{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:24px;align-items:start;padding-block:clamp(56px,7vw,110px) clamp(40px,5vw,72px)}
+.about .tag{margin-top:.9em}
+.manifest{font-size:clamp(26px,3.1vw,44px);line-height:1.16;letter-spacing:-.035em;font-weight:500;max-width:24ch}
+.manifest .g{color:#B3B0AB}
+.manifest .sl{font-size:.7em;color:var(--ink-3);margin:0 .2em;font-weight:400}
+@media (max-width:760px){.about{grid-template-columns:1fr}}
+
+/* ===== bento stats ===== */
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.bx{border-radius:var(--r-lg);background:var(--card);padding:20px;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;position:relative;overflow:hidden}
+.bx .k{font-size:13px;font-weight:550}
+.bx .big{font-size:clamp(40px,4vw,56px);font-weight:500;letter-spacing:-.05em;line-height:1}
+.bx .big sup{font-size:.36em;vertical-align:1.3em;margin-left:2px;letter-spacing:0}
+.bx p{font-size:13px;color:var(--ink-2);line-height:1.45}
+.bx.dark{background:var(--dark);color:var(--on-dark)}
+.bx.dark p{color:var(--on-dark-2)}
+.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.thumbs i{aspect-ratio:1;border-radius:50%;background-size:cover;background-position:center 18%;border:2px solid #fff}
+.badge{position:absolute;right:16px;top:16px;width:96px;height:96px}
+.bx .mini{width:76px;height:76px;border-radius:12px;overflow:hidden;background:#fff}
+.bx .mini img{width:100%;height:100%;object-fit:cover;object-position:top}
+.bx-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.bx.img{background:var(--cream)}
+.bx.img img.bg{position:absolute;right:-22%;top:-6%;width:120%;max-width:none}
+.bx.img::after{content:"";position:absolute;inset:26% 0 0 0;background:linear-gradient(to bottom,rgba(247,240,227,0),var(--cream) 52%)}
+.bx.img > *:not(.bg){position:relative;z-index:1}
+@media (max-width:1000px){.bento{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.bento{grid-template-columns:1fr}}
+
+/* ===== section heads ===== */
+.sec{padding-block:clamp(72px,9vw,140px) 0}
+.head{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,5fr) minmax(0,4fr);gap:20px 24px;align-items:start;margin-bottom:clamp(28px,3.6vw,48px)}
+.head h2{font-size:clamp(30px,3.4vw,48px);line-height:1.04;letter-spacing:-.04em}
+.head p{font-size:13.5px;color:var(--ink-2);max-width:42ch;justify-self:end}
+@media (max-width:900px){.head{grid-template-columns:1fr}.head p{justify-self:start}}
+
+/* ===== dark structure accordion ===== */
+.darkblock{background:var(--dark);color:var(--on-dark);border-radius:var(--r-xl);padding:clamp(22px,3.4vw,48px)}
+.darkblock .tag,.darkblock .head p{color:var(--on-dark-2)}
+.darkblock .head{margin-bottom:clamp(20px,3vw,40px)}
+.legend{display:flex;gap:8px;flex-wrap:wrap;justify-self:end;grid-column:3}
+.legend .pill{background:transparent;border-color:var(--dark-line);color:var(--on-dark);height:30px;font-size:12px}
+.legend i{width:7px;height:7px;border-radius:50%}
+.acc{border-top:1px solid var(--dark-line)}
+.acc details{border-bottom:1px solid var(--dark-line)}
+.acc summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:56px minmax(0,1fr) auto 40px;align-items:center;gap:16px;padding-block:22px}
+.acc summary::-webkit-details-marker{display:none}
+.acc .no{font-size:12px;color:var(--on-dark-2);font-weight:500}
+.acc .ttl{font-size:clamp(20px,2.2vw,30px);letter-spacing:-.03em;font-weight:500;display:flex;align-items:center;gap:12px}
+.acc .ttl i{width:10px;height:10px;border-radius:3px;flex:none}
+.acc .meta{display:flex;gap:14px;align-items:center;font-size:12.5px;color:var(--on-dark-2);white-space:nowrap}
+.pm{width:34px;height:34px;border-radius:50%;border:1px solid #4A4846;display:grid;place-items:center;transition:transform .25s ease,background .2s ease}
+.pm svg{width:12px;height:12px}
+details[open] .pm{transform:rotate(45deg);background:var(--on-dark);color:var(--ink);border-color:var(--on-dark)}
+.acc .body{display:grid;grid-template-columns:56px minmax(0,5fr) minmax(0,5fr) 40px;gap:16px;padding:0 0 28px}
+.acc .body .txt{grid-column:2;display:flex;flex-direction:column;gap:16px}
+.acc .body p{color:var(--on-dark-2);font-size:14px;max-width:52ch}
+.acc .chips{display:flex;flex-wrap:wrap;gap:6px}
+.acc .chips span{font-size:12px;border:1px solid var(--dark-line);border-radius:999px;padding:5px 11px;color:var(--on-dark)}
+.acc .shots{grid-column:3;display:flex;gap:10px;justify-content:flex-end}
+.acc .shots .s{width:min(140px,30%);aspect-ratio:590/1278;border-radius:16px;overflow:hidden;background:#fff;padding:4px}
+.acc .shots .s img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:550}
+.st::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.st-done{color:#38B26A}.st-wip{color:#E0A100}.st-idea{color:#9B83E6}
+.lt .st-done{color:#00964A}.lt .st-wip{color:#B98400}.lt .st-idea{color:#7457C4}
+.dark-cta{margin-top:28px}
+@media (max-width:860px){
+  .legend{grid-column:auto;justify-self:start}
+  .acc summary{grid-template-columns:36px minmax(0,1fr) 36px}
+  .acc .meta{grid-column:2;grid-row:2}
+  .acc .pm{grid-column:3;grid-row:1}
+  .acc .body{grid-template-columns:36px minmax(0,1fr)}
+  .acc .shots{grid-column:2;justify-content:flex-start}
+}
+
+/* ===== regions showcase ===== */
+.showcase{display:flex;flex-direction:column;gap:10px}
+.rc{position:relative;background:var(--cream);border-radius:var(--r-xl);overflow:hidden;min-height:clamp(380px,44vw,620px);display:flex;flex-direction:column;justify-content:space-between;padding:clamp(18px,2.6vw,36px)}
+.rc img.isl{position:absolute;left:52%;top:46%;transform:translate(-50%,-50%);width:min(60%,860px);max-height:70%;object-fit:contain}
+.rc .row{position:relative;display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.rc .row.bot{align-items:flex-end}
+.rc .top-txt{font-size:13px;color:var(--ink-2);max-width:30ch;text-align:right}
+.rc h3{font-size:clamp(28px,3.4vw,48px);letter-spacing:-.04em;line-height:1}
+.rc .pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.rc .pills .pill{height:30px;font-size:12px;background:rgba(255,255,255,.7);border-color:transparent}
+.rc .meta{display:grid;grid-template-columns:auto auto;gap:4px 28px;font-size:12.5px;text-align:left}
+.rc .meta span{color:var(--ink-2)}
+.rc .meta b{font-weight:550}
+.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.next{background:var(--card);border-radius:var(--r-xl);padding:clamp(20px,2.6vw,36px);display:grid;grid-template-columns:minmax(0,3fr) repeat(2,minmax(0,4fr));gap:20px}
+.next .it{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:16px}
+.next .it b{font-size:22px;font-weight:500;letter-spacing:-.03em}
+.next .it span{color:var(--ink-2);font-size:13.5px}
+@media (max-width:760px){
+  .rc{min-height:520px}
+  .rc img.isl{width:112%;max-height:none;top:44%}
+  .rc .row,.rc .row.bot{flex-direction:column;align-items:flex-start}.rc .top-txt{text-align:left}
+  .next{grid-template-columns:1fr}
+}
+
+/* ===== process (game loop) ===== */
+.proc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-radius:var(--r-lg);overflow:hidden;background:var(--paper);border:1px solid var(--line)}
+.proc .col{position:relative;height:clamp(220px,22vw,300px);border-left:1px solid var(--line)}
+.proc .col:first-child{border-left:0}
+.proc .bar{position:absolute;left:0;right:0;min-height:28px;background:var(--ink);color:#fff;font-size:12px;font-weight:550;display:flex;align-items:center;padding:5px 10px;line-height:1.15}
+.proc .n{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:11.5px;color:var(--ink-3)}
+.proc-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
+.pc{background:var(--card);border-radius:var(--r-md);padding:18px;display:flex;flex-direction:column;gap:8px;min-height:120px}
+.pc b{font-size:16px;font-weight:550;letter-spacing:-.01em}
+.pc span{font-size:13px;color:var(--ink-2)}
+@media (max-width:760px){.proc{grid-template-columns:repeat(4,minmax(0,1fr))}.proc .bar{font-size:10.5px;padding:0 6px}.proc-cards{grid-template-columns:1fr 1fr}}
+
+/* ===== concept bento ===== */
+.cb{display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(0,1fr));grid-template-rows:auto auto;gap:10px}
+.cb .lead{grid-row:1/3;background:var(--dark);color:var(--on-dark);border-radius:var(--r-lg);padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;position:relative;min-height:380px}
+.cb .lead .k{font-size:13px;font-weight:550}
+.cb .lead .big{font-size:64px;font-weight:500;letter-spacing:-.05em;line-height:1}
+.cb .lead .big small{font-size:16px;color:var(--on-dark-2);letter-spacing:0;margin-left:6px}
+.cb .lead p{font-size:13px;color:var(--on-dark-2)}
+.cb .lead .badge{top:20px;right:20px}
+.idea{background:var(--card);border-radius:var(--r-lg);padding:20px;display:flex;flex-direction:column;gap:12px;min-height:184px}
+.idea .q{font-size:30px;line-height:.8;color:var(--ink);font-weight:600}
+.idea h3{font-size:19px;letter-spacing:-.025em;line-height:1.15;font-weight:550}
+.idea p{font-size:13.5px;color:var(--ink-2);line-height:1.45;margin-top:auto}
+@media (max-width:1000px){.cb{grid-template-columns:1fr 1fr}.cb .lead{grid-row:auto;grid-column:1/-1;min-height:260px}}
+@media (max-width:520px){.cb{grid-template-columns:1fr}}
+.strip{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px 28px;padding-block:28px;margin-top:10px;color:var(--ink-3);font-size:15px;font-weight:550}
+.strip span{display:inline-flex;align-items:center;gap:8px}
+.strip svg{width:18px;height:18px}
+
+/* ===== screens ===== */
+.flow{margin-top:10px;background:var(--card);border-radius:var(--r-xl);padding:clamp(18px,2.2vw,28px)}
+.flow-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:18px}
+.flow-h h3{font-size:clamp(20px,1.8vw,24px);letter-spacing:-.03em}
+.flow-h span{font-size:12.5px;color:var(--ink-2)}
+.flow-strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--card-2) transparent;padding-bottom:4px}
+.shot{flex:0 0 clamp(148px,14vw,196px);display:flex;flex-direction:column;gap:10px;scroll-snap-align:start;background:none;border:0;padding:0;text-align:left;cursor:zoom-in}
+.shot .ph{background:#fff;border-radius:20px;padding:5px;aspect-ratio:590/1278;transition:transform .25s ease}
+.shot:hover .ph{transform:translateY(-3px)}
+.shot .ph img{width:100%;height:100%;object-fit:cover;border-radius:16px}
+.shot .cap{font-size:13px;font-weight:550;line-height:1.3}
+.shot .cap span{display:block;font-size:11.5px;color:var(--ink-3);font-weight:500}
+
+dialog.lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%}
+dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
+.lb-in{height:100%;display:grid;grid-template-columns:auto minmax(0,auto) minmax(0,340px) auto;align-items:center;justify-content:center;gap:24px;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px))}
+.lb-img{height:min(86vh,900px);aspect-ratio:590/1278;max-width:100%;border-radius:36px;background:#fff;padding:8px}
+.lb-img img{width:100%;height:100%;object-fit:contain;border-radius:29px}
+.lb-txt{color:#fff;display:flex;flex-direction:column;gap:12px}
+.lb-txt .br{color:rgba(255,255,255,.6)}
+.lb-txt h3{font-size:28px;letter-spacing:-.03em}
+.lb-txt p{color:rgba(255,255,255,.8);font-size:15px}
+.lb-nav{width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-size:20px;cursor:pointer}
+.lb-nav:hover{background:rgba(255,255,255,.12)}
+.lb-close{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px));width:46px;height:46px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:20px;cursor:pointer}
+@media (max-width:860px){.lb-in{grid-template-columns:auto minmax(0,1fr) auto;align-content:center;gap:14px}.lb-img{height:62vh;justify-self:center}.lb-txt{grid-column:1/-1;grid-row:2;text-align:center;align-items:center}.lb-txt h3{font-size:22px}.lb-nav{width:42px;height:42px}}
+
+/* ===== style ===== */
+.sg{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:10px}
+.card{background:var(--card);border-radius:var(--r-xl);padding:clamp(20px,2.6vw,34px);min-width:0}
+.card .k{font-size:13px;font-weight:550;margin-bottom:22px;display:block}
+.specimen{font-size:clamp(70px,10.5vw,160px);line-height:.9;letter-spacing:-.055em;font-weight:500}
+.weights{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-size:clamp(20px,2vw,28px);letter-spacing:-.025em}
+.weights small{display:block;font-size:11px;color:var(--ink-3);letter-spacing:0;font-weight:500}
+.card .note{margin-top:22px;color:var(--ink-2);font-size:13px;max-width:52ch}
+.pal{display:flex;flex-direction:column;gap:12px}
+.pal .row{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:center;gap:12px;font-size:13.5px;font-weight:550}
+.pal .tones{display:flex;height:42px;border-radius:12px;overflow:hidden}
+.pal .tones i{flex:1}
+.sys{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px;font-size:13px}
+.sys span{display:inline-flex;align-items:center;gap:7px}
+.sys i{width:18px;height:18px;border-radius:6px}
+.sys small{color:var(--ink-3)}
+.btns{display:flex;flex-direction:column;gap:8px;margin-top:24px}
+.ab{display:block;text-align:center;font-weight:600;font-size:15px;padding:14px;border-radius:16px;color:#fff}
+.ab.ghost{background:#fff;color:var(--kyzyl);box-shadow:inset 0 0 0 1.5px var(--card-2),inset 0 -4px 0 var(--card-2)}
+@media (max-width:900px){.sg{grid-template-columns:1fr}}
+
+/* ===== questions / updates ===== */
+.qs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.qc{background:var(--card);border-radius:var(--r-md);padding:20px;display:flex;flex-direction:column;gap:10px;min-height:150px}
+.qc .n{font-size:11.5px;color:var(--ink-3);font-weight:550}
+.qc b{font-size:17px;font-weight:550;letter-spacing:-.02em}
+.qc p{font-size:13.5px;color:var(--ink-2)}
+@media (max-width:900px){.qs{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.qs{grid-template-columns:1fr}}
+.ups{border-top:1px solid var(--ink)}
+.up{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,5fr) minmax(0,4fr);gap:12px 24px;padding-block:24px;border-bottom:1px solid var(--line)}
+.up .d{font-size:13px;font-weight:550;color:var(--ink-2)}
+.up .d em{font-style:normal;margin-left:8px;font-size:11px;font-weight:600;color:#fff;background:var(--kyzyl);border-radius:999px;padding:3px 8px}
+.up h3{font-size:clamp(20px,1.8vw,24px);letter-spacing:-.03em}
+.up ul{margin:0;padding-left:18px;color:var(--ink-2);display:flex;flex-direction:column;gap:4px;font-size:13.5px}
+@media (max-width:860px){.up{grid-template-columns:1fr}}
+
+/* ===== footer ===== */
+.foot{background:var(--dark);color:var(--on-dark);border-radius:var(--r-xl);padding:clamp(22px,3.4vw,48px);margin-block:clamp(72px,9vw,140px) 16px}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+.foot .wordmark{font-size:clamp(48px,9.4vw,150px)}
+.foot .yr{text-align:right;font-size:18px;font-weight:500;display:flex;flex-direction:column;align-items:flex-end;gap:16px}
+.foot .yr i{display:block;width:64px;height:2px;background:var(--on-dark)}
+.foot-mid{display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2fr));gap:24px;margin-top:clamp(36px,5vw,72px)}
+.foot-mid p{font-size:13px;color:var(--on-dark-2);max-width:34ch}
+.foot-mid .mail{display:inline-block;margin-top:14px;font-size:clamp(20px,2vw,26px);letter-spacing:-.03em;border-bottom:1.5px solid var(--on-dark);padding-bottom:2px}
+.foot-mid h4{margin:0 0 12px;font-size:11px;font-weight:550;letter-spacing:.06em;text-transform:uppercase;color:var(--on-dark-2)}
+.foot-mid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:13.5px}
+.foot-mid a:hover{color:var(--on-dark-2)}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:clamp(36px,5vw,64px);padding-top:18px;border-top:1px solid var(--dark-line);font-size:12px;color:var(--on-dark-2)}
+.up-btn{width:40px;height:40px;border-radius:50%;border:1px solid #4A4846;display:grid;place-items:center;color:var(--on-dark)}
+@media (max-width:860px){.foot-mid{grid-template-columns:1fr 1fr}.foot-mid > div:first-child{grid-column:1/-1}.foot .wordmark{white-space:normal}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Easy Kyrgyz<sup>®</sup></a>
+    <nav class="menu" aria-label="Разделы">
+      <a href="#structure">Структура</a><i>+</i>
+      <a href="#regions">Регионы</a><i>+</i>
+      <a href="#loop">Цикл</a><i>+</i>
+      <a href="#concept">Концепция</a><i>+</i>
+      <a href="#screens">Экраны</a><i>+</i>
+      <a href="#updates">Обновления</a>
+    </nav>
+    <a class="nav-r" href="map.html">Майнд-карта <span class="burger" aria-hidden="true"><span></span><span></span></span></a>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-top">
+      <h1 class="wordmark">Easy Kyrgyz<span class="reg">®</span></h1>
+      <div class="hero-aside">
+        <div class="who" aria-hidden="true">
+          <span class="av" style="background:var(--kyzyl)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span>
+          <span class="ln"></span>
+          <span class="avs"><i style="background:#D7263D"></i><i style="background:#2DB8E6"></i><i style="background:#00B33F"></i></span>
+          <span class="br" style="margin-left:6px">[ Проектная доска ]</span>
+        </div>
+        <p>Приложение для изучения кыргызского в духе Duolingo. Здесь структура, концепция, экраны и изменения каждой итерации.</p>
+      </div>
+    </div>
+    <div class="hero-card">
+      <img class="isl" src="img/map-yurts.webp" alt="Иллюстрация: жайлоо с юртами, лошадьми и овцами">
+      <div class="cap">
+        <p>Пять минут в день, путешествие по карте Кыргызстана и свой жайлоо, который растёт вместе с учёбой.</p>
+        <div class="tabs" id="tabs"></div>
+      </div>
+      <a class="float" href="#screens">
+        <span class="ph"><img src="img/06.webp" alt="Главный экран, регион Чуй"></span>
+        <span class="lab"><b>Главная · Чуй</b><svg class="arr" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l6-6M4 3h5v5"/></svg><span id="floatIter"></span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <span class="tag">О проекте</span>
+    <p class="manifest">Мы учим кыргызскому не через зубрёжку, а через путешествие<span class="sl">/</span><span class="g">ученик проходит регионы страны, обустраивает свой жайлоо и возвращается завтра, потому что ему интересно.</span></p>
+  </section>
+
+  <div class="bento">
+    <div class="bx">
+      <div class="thumbs" id="thumbs"></div>
+      <div><div class="k">Экранов в драфте</div><div class="big num" style="margin-top:8px">23</div></div>
+    </div>
+    <div class="bx dark">
+      <div class="k">Регионов на карте</div>
+      <svg class="badge" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text font-size="8.2" font-weight="550" letter-spacing="1.6" fill="#F4F3F0"><textPath href="#circ">EASY KYRGYZ · КАРТА РЕГИОНОВ · 2026 ·</textPath></text><path d="M50 36l3.9 8.3 9.1 1.1-6.7 6.3 1.7 9-8-4.4-8 4.4 1.7-9-6.7-6.3 9.1-1.1z" fill="#F4F3F0"/></svg>
+      <div><div class="big num">5</div><p style="margin-top:12px">Бишкек, Иссык-Куль, Нарын, Ош и Талас. У каждого региона свой цвет интерфейса.</p></div>
+    </div>
+    <div class="bx">
+      <p>Выбор картинки, сборка фразы, аудирование и поиск пар. Урок — 12 заданий примерно на пять минут.</p>
+      <div class="bx-row"><div><div class="k">Типа заданий</div><div class="big num" style="margin-top:8px">4</div></div><div class="mini"><img src="img/09.webp" alt="Экран урока"></div></div>
+    </div>
+    <div class="bx img">
+      <img class="bg" src="img/map-issyk.webp" alt="" aria-hidden="true">
+      <span></span>
+      <div><div class="k">Языков обучения</div><div class="big num" style="margin-top:8px">3<sup>+2</sup></div><p style="margin-top:12px;color:var(--ink)">Русский, English, Қазақша. Скоро O‘zbekcha и Тоҷикӣ.</p></div>
+    </div>
+  </div>
+
+  <!-- STRUCTURE -->
+  <section class="sec" id="structure">
+    <div class="darkblock">
+      <div class="head">
+        <span class="tag">Структура приложения</span>
+        <h2>Десять разделов, из которых складывается приложение</h2>
+        <div class="legend"><span class="pill"><i style="background:#38B26A"></i>В драфте</span><span class="pill"><i style="background:#E0A100"></i>В работе</span><span class="pill"><i style="background:#9B83E6"></i>Идея</span></div>
+      </div>
+      <div class="acc" id="acc"></div>
+      <a class="pill pill-light dark-cta" href="map.html">Открыть майнд-карту <svg class="arr" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l6-6M4 3h5v5"/></svg></a>
+    </div>
+  </section>
+
+  <!-- REGIONS -->
+  <section class="sec" id="regions">
+    <div class="head">
+      <span class="tag">Маршрут по карте</span>
+      <h2>Каждый регион — раздел уроков со своей историей</h2>
+      <p>Вместо цепочки уровней ученик путешествует по стране. Проходя регион, он открывает следующий и узнаёт его легенды и традиции.</p>
+    </div>
+    <div class="showcase" id="showcase"></div>
+  </section>
+
+  <!-- LOOP -->
+  <section class="sec" id="loop">
+    <div class="head">
+      <span class="tag">Игровой цикл</span>
+      <h2>Цикл, который возвращает ученика каждый день</h2>
+      <p>Тыйыны зарабатываются только учёбой и тратятся на жайлоо. Прогресс виден в мире игры, а не в цифрах.</p>
+    </div>
+    <div class="proc" id="proc"></div>
+    <div class="proc-cards" id="procCards"></div>
+  </section>
+
+  <!-- CONCEPT -->
+  <section class="sec" id="concept">
+    <div class="head">
+      <span class="tag">Концепция</span>
+      <h2>Шесть идей обновлённого приложения</h2>
+      <p>Из презентации концепции, октябрь 2026. Главная мысль: у ученика есть причина вернуться завтра.</p>
+    </div>
+    <div class="cb" id="cb"></div>
+    <div class="strip" id="strip"></div>
+  </section>
+
+  <!-- SCREENS -->
+  <section class="sec" id="screens">
+    <div class="head">
+      <span class="tag">Черновой дизайн</span>
+      <h2>23 экрана драфта</h2>
+      <p>Нажмите на экран, чтобы открыть его крупно. Шрифты, цвета и иллюстрации в макетах ещё дорабатываются.</p>
+    </div>
+    <div id="flows"></div>
+  </section>
+
+  <!-- STYLE -->
+  <section class="sec" id="style">
+    <div class="head">
+      <span class="tag">Визуальный язык</span>
+      <h2>Шрифт, цвета регионов и кнопки</h2>
+      <p>Красный и бежевый, объёмные кнопки и кыргызский орнамент. Цвет кнопок и активных состояний меняется вместе с регионом.</p>
+    </div>
+    <div class="sg">
+      <div class="card">
+        <span class="k">Medeo Sans</span>
+        <div class="specimen">Аа Өө<br>Үү Ңң</div>
+        <div class="weights">
+          <span style="font-weight:300">Салам<small>300</small></span>
+          <span style="font-weight:400">Салам<small>400</small></span>
+          <span style="font-weight:500">Салам<small>500</small></span>
+          <span style="font-weight:600">Салам<small>600</small></span>
+          <span style="font-weight:700">Салам<small>700</small></span>
+          <span style="font-weight:800">Салам<small>800</small></span>
+        </div>
+        <p class="note">Переменный шрифт DNF Studio под лицензией SIL Open Font License: веса от 100 до 900, кириллица с буквами ң, ө, ү.</p>
+      </div>
+      <div class="card">
+        <span class="k">Цвета регионов · из переменных Figma</span>
+        <div class="pal" id="pal"></div>
+        <div class="sys" id="sys"></div>
+        <div class="btns" aria-hidden="true">
+          <span class="ab" style="background:#D7263D;box-shadow:inset 0 -4px 0 #A51C2E">Продолжить</span>
+          <span class="ab" style="background:#2DB8E6;box-shadow:inset 0 -4px 0 #007DA7">Продолжить</span>
+          <span class="ab ghost">Продолжить</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUESTIONS -->
+  <section class="sec" id="questions">
+    <div class="head">
+      <span class="tag">Нужно решение</span>
+      <h2>Открытые вопросы</h2>
+      <p>То, что ещё обсуждается с командой и заказчиком.</p>
+    </div>
+    <div class="qs" id="qs"></div>
+  </section>
+
+  <!-- UPDATES -->
+  <section class="sec" id="updates">
+    <div class="head">
+      <span class="tag">История проекта</span>
+      <h2>Обновления по итерациям</h2>
+      <p>Что изменилось в каждой итерации. Новые записи появляются сверху.</p>
+    </div>
+    <div class="ups" id="ups"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="foot-top">
+      <div class="wordmark">Easy Kyrgyz<span class="reg">®</span></div>
+      <div class="yr"><span id="footYear"></span><i></i></div>
+    </div>
+    <div class="foot-mid">
+      <div>
+        <p>Проектная доска команды дизайна. Обновляется каждую итерацию, ссылка не меняется.</p>
+        <a class="mail" href="map.html">Открыть майнд-карту</a>
+      </div>
+      <div><h4>Доска</h4><ul><li><a href="#structure">Структура</a></li><li><a href="#regions">Регионы</a></li><li><a href="#loop">Игровой цикл</a></li><li><a href="#concept">Концепция</a></li></ul></div>
+      <div><h4>Дизайн</h4><ul><li><a href="#screens">Экраны</a></li><li><a href="#style">Стиль</a></li><li><a href="#questions">Вопросы</a></li><li><a href="#updates">Обновления</a></li></ul></div>
+      <div><h4>Регионы</h4><ul id="footRegions"></ul></div>
+    </div>
+    <div class="foot-bot"><span id="footIter"></span><a class="up-btn" href="#top" aria-label="Наверх"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 10V2M2.5 5.5L6 2l3.5 3.5"/></svg></a></div>
+  </footer>
+</main>
+
+<dialog class="lb" id="lb" aria-label="Экран крупно">
+  <button class="lb-close" id="lbClose" aria-label="Закрыть">×</button>
+  <div class="lb-in">
+    <button class="lb-nav" id="lbPrev" aria-label="Предыдущий экран">←</button>
+    <div class="lb-img"><img id="lbImg" alt=""></div>
+    <div class="lb-txt"><span class="br" id="lbGroup"></span><h3 id="lbTitle"></h3><p id="lbDesc"></p></div>
+    <button class="lb-nav" id="lbNext" aria-label="Следующий экран">→</button>
+  </div>
+</dialog>
+
+<script src="data.js"></script>
+<script>
+const D = window.EK;
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const ST = { done: ["В драфте", "st-done"], wip: ["В работе", "st-wip"], idea: ["Идея", "st-idea"] };
+const st = s => `<span class="st ${ST[s][1]}">${ST[s][0]}</span>`;
+const ARR = `<svg class="arr" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l6-6M4 3h5v5"/></svg>`;
+const PLUS = `<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 1v10M1 6h10"/></svg>`;
+const ICON = {
+  map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>',
+  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 10l8-6 8 6v10H4z"/><path d="M12 16.5s-3-1.8-3-3.6a1.6 1.6 0 013-.8 1.6 1.6 0 013 .8c0 1.8-3 3.6-3 3.6z"/></svg>',
+  team: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-3 2.2-5 5-5s5 2 5 5M11 20c0-3 2.2-5 5-5s5 2 5 5"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 4h14v13H9l-4 3z"/><path d="M9 9h6M9 12.5h4"/></svg>',
+  user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>',
+};
+const TABS = [["map", "Карта"], ["home", "Жайлоо"], ["team", "Уруу"], ["book", "Знания"], ["user", "Профиль"]];
+
+const it = D.iteration;
+$("#floatIter").textContent = `Итерация ${it.n} · ${it.date}`;
+$("#footYear").textContent = "© 2026";
+$("#footIter").textContent = `Итерация ${it.n} · обновлено ${it.date}`;
+$("#tabs").innerHTML = TABS.map(([i, t]) => `<span>${ICON[i]}${t}</span>`).join("");
+$("#strip").innerHTML = TABS.map(([i, t]) => `<span>${ICON[i]}${t}</span>`).join("");
+
+const SCREENS = [];
+D.map.children.forEach(b => b.children.forEach(c => { if (c.img) SCREENS.push({ ...c, group: b.label }); }));
+SCREENS.sort((a, b) => parseInt(a.label) - parseInt(b.label));
+const byNo = n => SCREENS.find(s => parseInt(s.label) === n);
+
+$("#thumbs").innerHTML = [1, 6, 9, 12, 15, 16, 18, 21, 22, 23].map(n => `<i style="background-image:url(${byNo(n).img})"></i>`).join("");
+
+/* structure accordion */
+$("#acc").innerHTML = D.map.children.map((b, i) => {
+  const shots = b.children.filter(c => c.img).slice(0, 3);
+  const count = b.children.filter(c => c.img).length;
+  const meta = count ? `${count} ${count === 1 ? "экран" : count < 5 ? "экрана" : "экранов"}` : `${b.children.length} пункта`;
+  return `<details${i === 0 ? " open" : ""}><summary><span class="no num">/${String(i + 1).padStart(2, "0")}</span><span class="ttl"><i style="background:${b.color}"></i>${esc(b.label)}</span><span class="meta">${meta}${st(b.status)}</span><span class="pm">${PLUS}</span></summary>
+  <div class="body"><div class="txt"><p>${esc(b.desc)}</p><div class="chips">${b.children.map(c => `<span>${esc(c.label)}</span>`).join("")}</div><a class="pill pill-light" style="align-self:flex-start" href="map.html#${b.key}">Открыть на карте ${ARR}</a></div>
+  <div class="shots">${shots.map(c => `<div class="s"><img loading="lazy" src="${c.img}" alt="${esc(c.label)}"></div>`).join("")}</div></div></details>`;
+}).join("");
+
+/* regions showcase */
+const withImg = D.regions.filter(r => r.img), rest = D.regions.filter(r => !r.img);
+$("#showcase").innerHTML = withImg.map(r => `<article class="rc"><img class="isl" loading="lazy" src="${r.img}" alt="Иллюстрация региона ${esc(r.t)}">
+  <div class="row"><span class="tag">Регион ${String(r.n).padStart(2, "0")}</span><p class="top-txt">${esc(r.d)}</p></div>
+  <div class="row bot"><div><h3>${esc(r.t)}</h3><div class="pills">${r.lessons ? `<span class="pill">${r.lessons}</span>` : `<span class="pill">Уроки в работе</span>`}${r.tones ? `<span class="pill"><i class="sw" style="background:${r.tones[0]}"></i>${r.tones[0]}</span>` : ""}</div></div>
+  <div class="meta lt"><span>Статус</span><span>Цвет</span>${st(r.status)}<b><i class="sw" style="background:${r.tones[0]}"></i>${["Красный", "Голубой", "Зелёный"][r.n - 1] || ""}</b></div></div></article>`).join("")
+  + `<div class="next"><div><span class="tag">Дальше по маршруту</span></div>${rest.map(r => `<div class="it"><span class="num">Регион ${String(r.n).padStart(2, "0")}</span><b>${esc(r.t)}</b><span>${esc(r.d)}. Цвет и уроки ещё не определены.</span></div>`).join("")}</div>`;
+
+/* loop */
+$("#proc").innerHTML = D.loop.map((x, i) => `<div class="col"><div class="bar" style="top:${12 + i * 18}%">${esc(x.t)}</div><span class="n num">0${i + 1}</span></div>`).join("");
+$("#procCards").innerHTML = D.loop.map(x => `<div class="pc"><b>${esc(x.t)}</b><span>${esc(x.d)}</span></div>`).join("");
+
+/* concept bento */
+$("#cb").innerHTML = `<div class="lead"><div><div class="k">Концепция</div></div>
+  <svg class="badge" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="circ2" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text font-size="8.2" font-weight="550" letter-spacing="1.6" fill="#F4F3F0"><textPath href="#circ2">ДРАФТ ДЛЯ ОБСУЖДЕНИЯ · ОКТЯБРЬ 2026 ·</textPath></text><path d="M50 36l3.9 8.3 9.1 1.1-6.7 6.3 1.7 9-8-4.4-8 4.4 1.7-9-6.7-6.3 9.1-1.1z" fill="#F4F3F0"/></svg>
+  <div><div class="big num">6<small>идей</small></div><p style="margin-top:14px">Карта страны вместо уровней, жайлоо вместо цифр, группы для школ и вузов, регулярные экзамены, праздники в уроках и маскот-барс.</p></div>
+  <a class="pill pill-light" style="align-self:flex-start" href="#regions">Смотреть регионы ${ARR}</a></div>`
+  + D.ideas.map((x, i) => `<article class="idea"><span class="q num">${String(i + 1).padStart(2, "0")}</span><h3>${esc(x.t)}</h3><p>${esc(x.d)}</p></article>`).join("");
+
+/* screens */
+$("#flows").innerHTML = D.screenFlows.map(f => {
+  const items = f.nos.map(byNo).filter(Boolean);
+  const range = `${String(f.nos[0]).padStart(2, "0")}–${String(f.nos[f.nos.length - 1]).padStart(2, "0")}`;
+  return `<div class="flow"><div class="flow-h"><h3>${esc(f.t)}</h3><span class="num">Экраны ${range}</span></div><div class="flow-strip">${items.map(c => {
+    const [no, ...r] = c.label.split(" · ");
+    return `<button class="shot" data-no="${parseInt(no)}"><span class="ph"><img loading="lazy" src="${c.img}" alt="${esc(c.label)}"></span><span class="cap"><span>${esc(no)}</span>${esc(r.join(" · "))}</span></button>`;
+  }).join("")}</div></div>`;
+}).join("");
+
+/* style */
+$("#pal").innerHTML = D.regions.filter(r => r.tones).map(r => `<div class="row"><span>${esc(r.t.split(" / ").pop())}</span><div class="tones">${r.tones.map(c => `<i style="background:${c}" title="${c}"></i>`).join("")}</div></div>`).join("");
+$("#sys").innerHTML = D.system.map(s => `<span><i style="background:${s.c}"></i>${esc(s.t)} <small>${esc(s.d)}</small></span>`).join("");
+
+$("#qs").innerHTML = D.questions.map((q, i) => `<div class="qc"><span class="n num">Вопрос ${String(i + 1).padStart(2, "0")}</span><b>${esc(q.t)}</b><p>${esc(q.d)}</p></div>`).join("");
+$("#ups").innerHTML = D.updates.map((u, i) => `<article class="up"><div class="d">${esc(u.date)}${i === 0 ? "<em>новое</em>" : ""}</div><h3>${esc(u.t)}</h3><ul>${u.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul></article>`).join("");
+$("#footRegions").innerHTML = D.regions.map(r => `<li>${esc(r.t)}</li>`).join("");
+
+/* lightbox */
+const lb = $("#lb"); let cur = 0;
+function show(i) { cur = (i + SCREENS.length) % SCREENS.length; const s = SCREENS[cur]; $("#lbImg").src = s.img; $("#lbImg").alt = s.label; $("#lbGroup").textContent = s.group; $("#lbTitle").textContent = s.label; $("#lbDesc").textContent = s.desc; }
+$("#flows").addEventListener("click", e => { const b = e.target.closest(".shot"); if (!b) return; show(SCREENS.findIndex(s => parseInt(s.label) === +b.dataset.no)); lb.showModal(); });
+$("#lbPrev").onclick = () => show(cur - 1); $("#lbNext").onclick = () => show(cur + 1); $("#lbClose").onclick = () => lb.close();
+lb.addEventListener("click", e => { if (e.target === lb || e.target.classList.contains("lb-in")) lb.close(); });
+lb.addEventListener("keydown", e => { if (e.key === "ArrowLeft") show(cur - 1); if (e.key === "ArrowRight") show(cur + 1); });
+</script>
+
+</body>
+</html>

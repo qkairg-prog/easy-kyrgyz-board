@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Майнд-карта · Easy Kyrgyz</title>
+<style>
+@font-face{font-family:"Medeo Sans";src:url("fonts/MedeoSansVariable.latin.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0300-0304, U+0306-030D, U+0312-0313, U+031B, U+0323, U+0326-0329, U+0330-0331, U+0335-0338, U+1DC4-1DC7, U+2007, U+2009, U+200B-200D, U+2011, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2028-2029, U+202F-2030, U+2032-2033, U+2039-203A, U+2044, U+20AC, U+2122, U+2191, U+2193, U+2212}
+@font-face{font-family:"Medeo Sans";src:url("fonts/MedeoSansVariable.latin-ext.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+0100-0137, U+0139-013E, U+0141-0148, U+014A-017E, U+0181, U+0186, U+0189-018A, U+018E-0192, U+0194, U+0196-0199, U+019D, U+01A0-01A1, U+01AF-01B4, U+01CD-01DD, U+01E4-01E9, U+01F8-01F9, U+0218-021B, U+0237, U+0244-0245, U+0253-0254, U+0256-0257, U+0259, U+025B, U+0263, U+0268-0269, U+0272, U+0289-028C, U+0294, U+02B9, U+02C7-02C8, U+02DD, U+0300-0304, U+0306-030D, U+0312-0313, U+031B, U+0323, U+0326-0329, U+0330-0331, U+0335-0338, U+1DC4-1DC7, U+1E04-1E05, U+1E0C-1E0D, U+1E1E-1E21, U+1E24-1E25, U+1E36-1E37, U+1E3E-1E3F, U+1E42-1E47, U+1E5A-1E5B, U+1E62-1E63, U+1E6C-1E6D, U+1E78-1E79, U+1E7E-1E85, U+1E92-1E93, U+1E9E, U+1EF2-1EF9, U+2020, U+20AA, U+20B1, U+20B4, U+20B8-20BA, U+20BC-20BF, U+A78B-A78C}
+@font-face{font-family:"Medeo Sans";src:url("fonts/MedeoSansVariable.cyrillic.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+0300-0304, U+0306-030D, U+0312-0313, U+031B, U+0323, U+0326-0329, U+0330-0331, U+0335-0338, U+0400-045F, U+0490-0493, U+049A-049B, U+04A2-04A3, U+04AE-04B1, U+04BA-04BB, U+04D8-04D9, U+04E8-04E9, U+1DC4-1DC7, U+2116}
+@font-face{font-family:"Medeo Sans";src:url("fonts/MedeoSansVariable.cyrillic-ext.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+0300-0304, U+0306-030D, U+0312-0313, U+031B, U+0323, U+0326-0329, U+0330-0331, U+0335-0338, U+0462-0463, U+046A-046B, U+0472-0475, U+0494-0499, U+049C-04A1, U+04A4-04AD, U+04B2-04B9, U+04BC-04C4, U+04C7-04C8, U+04CB-04CC, U+04CF-04D7, U+04DA-04E7, U+04EA-04F9, U+0512-0513, U+0524-0525, U+1DC4-1DC7, U+20B4}
+@font-face{font-family:"Medeo Sans";src:url("fonts/MedeoSansVariable.symbols.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+02D8-02D9, U+02DB, U+039B, U+03A9, U+03BB-03BC, U+03C0, U+0E3F, U+2070, U+2074-2079, U+2080-2089, U+20C5, U+2117, U+2126, U+2153-2155, U+215B-215E, U+2190, U+2192, U+2194-2199, U+219D, U+21A9-21AA, U+21B0-21B1, U+21B3-21B5, U+21E4-21E5, U+21E7, U+2202, U+2206, U+220F, U+2211, U+221A, U+221E, U+222B, U+2236, U+2248, U+2260, U+2264-2265, U+2460-2468, U+24EA, U+24FF, U+25B2-25B3, U+25B6-25B7, U+25BC-25BD, U+25C0-25C1, U+25CA-25CC, U+25CF, U+2605, U+2639-263A, U+2713-2714, U+2776-277E, U+3003, U+301C, U+F8FF, U+FB01-FB02}
+/* Layout: full-viewport canvas on a soft sand dot grid. Floating chrome: top bar, zoom pill bottom-left, legend bottom-right, detail drawer on the right (bottom sheet on phones). */
+:root{
+  --paper:#FFFFFF; --sand:#F3F2EF; --sand-2:#E4E2DD; --ink:#111111; --ink-2:#5F5D5A; --ink-3:#9A9793; --rule:#E4E2DD;
+  --kyzyl:#D7263D; --kyzyl-d:#A51C2E;
+  --done:#00964A; --wip:#E0A100; --idea:#7457C4;
+  --f:"Medeo Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --st:env(safe-area-inset-top,0px); --sb:env(safe-area-inset-bottom,0px); --sl:env(safe-area-inset-left,0px); --sr:env(safe-area-inset-right,0px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--sand);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.5;overflow:hidden;-webkit-font-smoothing:antialiased;overscroll-behavior:none}
+button{font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+#canvas{position:fixed;inset:0;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;
+  background-color:var(--sand);background-image:radial-gradient(circle,#D3D0CA 1.1px,transparent 1.3px);background-size:24px 24px}
+#canvas.grabbing{cursor:grabbing}
+#canvas svg{width:100%;height:100%;display:block}
+.node{cursor:pointer}
+.node text{font-family:var(--f);pointer-events:none}
+.n-root rect.b{fill:var(--kyzyl)}
+.n-card rect.b{fill:#fff;stroke:var(--rule);stroke-width:1}
+.n-card:hover rect.b{stroke:var(--ink-3)}
+.sel rect.ring{stroke:var(--ink);stroke-width:2.5;fill:none}
+.link{fill:none;stroke-width:2.25;stroke-linecap:round}
+.t-root{fill:#fff;font-size:20px;font-weight:650;letter-spacing:-.02em}
+.t-br{fill:#fff;font-size:15px;font-weight:600;letter-spacing:-.01em}
+.t-leaf{fill:var(--ink);font-size:13.5px;font-weight:500}
+.t-cnt{fill:#fff;font-size:11.5px;font-weight:650}
+
+/* chrome */
+.bar{position:fixed;top:calc(12px + var(--st));left:calc(12px + var(--sl));right:calc(12px + var(--sr));display:flex;align-items:center;gap:10px;z-index:5;pointer-events:none}
+.bar > *{pointer-events:auto}
+.chip{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 15px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px var(--rule);font-size:13.5px;font-weight:550;white-space:nowrap;border:0;cursor:pointer}
+.chip:hover{background:#FBFAF8}
+.title{font-weight:550;font-size:14px;letter-spacing:-.01em}
+.title small{color:var(--ink-3);font-weight:500;margin-left:6px}
+.spacer{flex:1}
+.ink{background:var(--ink);color:#fff}
+.ink:hover{background:#000}
+@media (max-width:640px){.title small{display:none}.hide-sm{display:none}}
+
+.zoom{position:fixed;left:calc(12px + var(--sl));bottom:calc(12px + var(--sb));display:flex;align-items:center;gap:2px;background:#fff;border-radius:999px;padding:4px;z-index:5;box-shadow:0 0 0 1px var(--rule)}
+.zoom button{width:40px;height:40px;border-radius:50%;border:0;background:transparent;cursor:pointer;font-size:20px;font-weight:500;display:grid;place-items:center}
+.zoom button:hover{background:var(--sand)}
+.zoom .pct{min-width:58px;text-align:center;font-weight:600;font-size:14px;font-variant-numeric:tabular-nums;border-radius:999px;width:auto;padding:0 8px}
+.legend{position:fixed;right:calc(12px + var(--sr));bottom:calc(12px + var(--sb));display:flex;gap:14px;background:#fff;border-radius:999px;padding:0 16px;height:48px;align-items:center;z-index:4;font-size:12.5px;font-weight:550;box-shadow:0 0 0 1px var(--rule)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:8px;height:8px;border-radius:50%}
+body.drawer-open .legend{right:calc(400px + var(--sr))}
+@media (max-width:860px){.legend{display:none}}
+
+.hint{position:fixed;left:50%;bottom:calc(76px + var(--sb));transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px;font-size:13.5px;font-weight:500;z-index:6;white-space:nowrap;transition:opacity .4s ease;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis}
+.hint.off{opacity:0;pointer-events:none}
+
+/* drawer */
+.drawer{position:fixed;top:calc(68px + var(--st));right:calc(12px + var(--sr));bottom:calc(12px + var(--sb));width:376px;background:#fff;border-radius:24px;z-index:5;display:flex;flex-direction:column;box-shadow:0 1px 0 rgba(21,18,20,.04),0 18px 48px -20px rgba(21,18,20,.4);transform:translateX(calc(100% + 24px));transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+body.drawer-open .drawer{transform:none}
+.dr-head{display:flex;align-items:center;gap:8px;padding:14px 14px 0 22px}
+.dr-crumb{flex:1;font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dr-x{width:36px;height:36px;border-radius:50%;border:0;background:var(--sand);cursor:pointer;font-size:18px;flex:none}
+.dr-body{overflow:auto;padding:10px 22px 24px;display:flex;flex-direction:column;gap:14px}
+.dr-body h2{margin:0;font-size:26px;line-height:1.1;letter-spacing:-.035em;font-weight:500}
+.dr-body p{margin:0;color:var(--ink-2)}
+.dr-body ul{margin:0;padding-left:18px;color:var(--ink-2);display:flex;flex-direction:column;gap:4px}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600}
+.st::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.st-done{color:var(--done)}.st-wip{color:#B98400}.st-idea{color:var(--idea)}
+.dr-shot{align-self:center;width:min(240px,70%);aspect-ratio:590/1278;border-radius:28px;background:var(--sand);padding:6px}
+.dr-shot img{width:100%;height:100%;object-fit:cover;border-radius:23px;display:block}
+.kids{display:flex;flex-wrap:wrap;gap:6px}
+.kid{border:0;background:var(--sand);border-radius:999px;padding:8px 12px;font-size:13.5px;font-weight:550;cursor:pointer}
+.kid:hover{background:var(--sand-2)}
+.kid i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:1px}
+@media (max-width:640px){
+  .drawer{top:auto;left:calc(8px + var(--sl));right:calc(8px + var(--sr));bottom:calc(8px + var(--sb));width:auto;max-height:58vh;transform:translateY(calc(100% + 24px))}
+  body.drawer-open .zoom{opacity:0;pointer-events:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="canvas" tabindex="0" aria-label="Майнд-карта. Перетаскивайте для перемещения, щипок или Ctrl и колесо для масштаба, плюс и минус на клавиатуре."><svg id="svg" role="img" aria-label="Майнд-карта приложения Easy Kyrgyz"><g id="world"></g></svg></div>
+
+<div class="bar">
+  <a class="chip" href="index.html" aria-label="Вернуться на доску"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg><span class="hide-sm">Доска</span></a>
+  <span class="chip title" style="cursor:default"><span>Easy Kyrgyz<sup style="color:#D7263D;font-size:8px;margin-left:1px">®</sup> · Майнд-карта</span><small id="iter"></small></span>
+  <span class="spacer"></span>
+  <button class="chip hide-sm" id="expAll">Развернуть всё</button>
+  <button class="chip hide-sm" id="colAll">Свернуть всё</button>
+  <button class="chip ink" id="fitBtn">Вписать</button>
+</div>
+
+<div class="zoom" role="group" aria-label="Масштаб">
+  <button id="zOut" aria-label="Уменьшить">−</button>
+  <button class="pct" id="pct" aria-label="Сбросить масштаб до 100%">100%</button>
+  <button id="zIn" aria-label="Увеличить">+</button>
+</div>
+<div class="legend"><span><i style="background:var(--done)"></i>В драфте</span><span><i style="background:var(--wip)"></i>В работе</span><span><i style="background:var(--idea)"></i>Идея</span></div>
+<div class="hint" id="hint"></div>
+
+<aside class="drawer" id="drawer" aria-live="polite">
+  <div class="dr-head"><span class="dr-crumb" id="crumb"></span><button class="dr-x" id="drX" aria-label="Закрыть описание">×</button></div>
+  <div class="dr-body" id="drBody"></div>
+</aside>
+
+<script src="data.js"></script>
+<script>
+(function () {
+const D = window.EK, ROOT = D.map;
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const ST = { done: ["В драфте", "st-done"], wip: ["В работе", "st-wip"], idea: ["Идея", "st-idea"] };
+const SC = { done: "#00964A", wip: "#E0A100", idea: "#7457C4" };
+$("#iter").textContent = `Итерация ${D.iteration.n} · ${D.iteration.date}`;
+
+/* ---------- tree prep ---------- */
+let uid = 0; const byId = {};
+(function prep(n, parent, depth) {
+  n.id = "n" + uid++; n.parent = parent; n.depth = depth; byId[n.id] = n;
+  if (parent && !n.color) n.color = parent.color;
+  if (depth === 1) n.collapsed = false;
+  (n.children || []).forEach(c => prep(c, n, depth + 1));
+})(ROOT, null, 0);
+
+const ctx = document.createElement("canvas").getContext("2d");
+const textW = (t, font) => { ctx.font = font; return ctx.measureText(t).width; };
+const F_ROOT = '650 20px "Medeo Sans", system-ui', F_BR = '600 15px "Medeo Sans", system-ui', F_LEAF = '500 13.5px "Medeo Sans", system-ui';
+const ROW = 42, GAP1 = 110, GAP2 = 60;
+
+/* ---------- layout (world coords, root centred at 0,0) ---------- */
+let NODES = [], LINKS = [], BOUNDS = null;
+function layout() {
+  NODES = []; LINKS = [];
+  const kids = ROOT.children, half = Math.ceil(kids.length / 2);
+  const oneSide = innerWidth <= 700;
+  const sides = oneSide ? [kids, []] : [kids.slice(0, half), kids.slice(half)];
+  ROOT.w = textW(ROOT.label, F_ROOT) + 56; ROOT.h = 60; ROOT.x = -ROOT.w / 2; ROOT.y = -30; ROOT.cy = 0;
+  NODES.push(ROOT);
+  const leaves = n => (!n.children || n.collapsed) ? 1 : n.children.length;
+  sides.forEach((list, si) => {
+    if (!list.length) return;
+    const dir = si === 0 ? 1 : -1;
+    const total = list.reduce((a, b) => a + leaves(b), 0) + (list.length - 1) * 0.4;
+    let cur = -total * ROW / 2;
+    const bw = Math.max(...list.map(b => textW(b.label, F_BR) + 64));
+    list.forEach(b => {
+      const L = leaves(b);
+      b.w = textW(b.label, F_BR) + 64; b.h = 42; b.dir = dir;
+      b.cy = cur + L * ROW / 2;
+      const x0 = ROOT.w / 2 + GAP1;
+      b.x = dir > 0 ? x0 : -x0 - b.w; b.y = b.cy - b.h / 2;
+      NODES.push(b); LINKS.push([ROOT, b]);
+      if (!b.collapsed) {
+        b.children.forEach((c, k) => {
+          c.w = textW(c.label, F_LEAF) + 46 + (c.img ? 22 : 0); c.h = 34; c.dir = dir;
+          c.cy = cur + k * ROW + ROW / 2;
+          const x1 = x0 + bw + GAP2;
+          c.x = dir > 0 ? x1 : -x1 - c.w; c.y = c.cy - c.h / 2;
+          NODES.push(c); LINKS.push([b, c]);
+        });
+      }
+      cur += (L + 0.4) * ROW;
+    });
+  });
+  let a = Infinity, b2 = -Infinity, c = Infinity, d = -Infinity;
+  NODES.forEach(n => { a = Math.min(a, n.x); b2 = Math.max(b2, n.x + n.w); c = Math.min(c, n.y); d = Math.max(d, n.y + n.h); });
+  BOUNDS = { x: a, y: c, w: b2 - a, h: d - c };
+}
+
+/* ---------- render ---------- */
+let selected = null;
+const world = $("#world");
+function render() {
+  layout();
+  let s = "";
+  LINKS.forEach(([p, ch]) => {
+    const dir = ch.dir;
+    const x1 = dir > 0 ? p.x + p.w : p.x, y1 = p.cy;
+    const x2 = dir > 0 ? ch.x : ch.x + ch.w, y2 = ch.cy;
+    const mx = x1 + (x2 - x1) * 0.5;
+    s += `<path class="link" d="M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}" stroke="${ch.color}" stroke-opacity="${ch.depth === 1 ? .55 : .4}"/>`;
+  });
+  NODES.forEach(n => {
+    const sel = n.id === selected ? " sel" : "";
+    const ring = sel ? `<rect class="ring" x="${n.x - 4}" y="${n.y - 4}" width="${n.w + 8}" height="${n.h + 8}" rx="${n.h / 2 + 4}"/>` : "";
+    if (n.depth === 0) {
+      s += `<g class="node n-root${sel}" data-id="${n.id}">${ring}<rect x="${n.x}" y="${n.y + 5}" width="${n.w}" height="${n.h}" rx="${n.h / 2}" fill="#A51C2E"/><rect class="b" x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="${n.h / 2}"/><text class="t-root" x="${n.x + n.w / 2}" y="${n.cy + 7}" text-anchor="middle">${esc(n.label)}</text></g>`;
+    } else if (n.depth === 1) {
+      const lab = n.collapsed ? "+" + n.children.length : "−";
+      s += `<g class="node${sel}" data-id="${n.id}">${ring}<rect x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="${n.h / 2}" fill="${n.color}"/><text class="t-br" x="${n.x + 18}" y="${n.cy + 5.5}">${esc(n.label)}</text><circle cx="${n.x + n.w - 22}" cy="${n.cy}" r="12" fill="#fff" fill-opacity=".22"/><text class="t-cnt" x="${n.x + n.w - 22}" y="${n.cy + 4}" text-anchor="middle">${lab}</text></g>`;
+    } else {
+      const img = n.img ? `<g transform="translate(${n.x + n.w - 26},${n.cy - 7.5})"><rect width="10" height="15" rx="2.5" fill="none" stroke="#9E958E" stroke-width="1.4"/><rect x="3.5" y="11.2" width="3" height="1.4" rx=".7" fill="#9E958E"/></g>` : "";
+      s += `<g class="node n-card${sel}" data-id="${n.id}">${ring}<rect class="b" x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="${n.h / 2}"/><circle cx="${n.x + 17}" cy="${n.cy}" r="4.5" fill="${SC[n.status] || "#B5ADA6"}"/><text class="t-leaf" x="${n.x + 29}" y="${n.cy + 4.8}">${esc(n.label)}</text>${img}</g>`;
+    }
+  });
+  world.innerHTML = s;
+}
+
+/* ---------- camera ---------- */
+const canvas = $("#canvas");
+const cam = { s: 1, x: 0, y: 0 };
+const MIN = 0.2, MAX = 3;
+let raf = 0;
+function apply() { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; world.setAttribute("transform", `translate(${cam.x},${cam.y}) scale(${cam.s})`); $("#pct").textContent = Math.round(cam.s * 100) + "%"; }); }
+function zoomAt(px, py, f) {
+  const s2 = Math.min(MAX, Math.max(MIN, cam.s * f)); const k = s2 / cam.s;
+  cam.x = px - (px - cam.x) * k; cam.y = py - (py - cam.y) * k; cam.s = s2; apply();
+}
+function viewRect() {
+  const r = canvas.getBoundingClientRect();
+  const open = document.body.classList.contains("drawer-open");
+  const narrow = innerWidth <= 640;
+  const top = 72, bottom = 72, right = open && !narrow ? 400 : 16, bot = open && narrow ? r.height * 0.58 + 16 : bottom;
+  return { x: 16, y: top, w: r.width - 16 - right, h: r.height - top - bot };
+}
+function fit(animate) {
+  const v = viewRect(), pad = 24;
+  const s = Math.min(MAX, Math.max(MIN, Math.min((v.w - pad * 2) / BOUNDS.w, (v.h - pad * 2) / BOUNDS.h)));
+  const tx = v.x + v.w / 2 - (BOUNDS.x + BOUNDS.w / 2) * s, ty = v.y + v.h / 2 - (BOUNDS.y + BOUNDS.h / 2) * s;
+  animateTo(s, tx, ty, animate);
+}
+function focusNode(n) {
+  const v = viewRect();
+  let bx = n.x, by = n.y, bx2 = n.x + n.w, by2 = n.y + n.h;
+  if (n.depth === 1 && !n.collapsed) n.children.forEach(c => { bx = Math.min(bx, c.x); by = Math.min(by, c.y); bx2 = Math.max(bx2, c.x + c.w); by2 = Math.max(by2, c.y + c.h); });
+  const fitS = Math.min((v.w - 32) / (bx2 - bx), (v.h - 32) / (by2 - by));
+  const s = Math.min(1.2, Math.max(MIN, n.depth === 1 ? fitS : Math.max(cam.s, 0.9)));
+  animateTo(s, v.x + v.w / 2 - (bx + bx2) / 2 * s, v.y + v.h / 2 - (by + by2) / 2 * s, true);
+}
+let anim = 0;
+function animateTo(s, x, y, animate) {
+  cancelAnimationFrame(anim);
+  if (!animate || matchMedia("(prefers-reduced-motion: reduce)").matches) { cam.s = s; cam.x = x; cam.y = y; apply(); return; }
+  const a = { ...cam }, t0 = performance.now(), dur = 380;
+  const step = t => { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+    cam.s = a.s + (s - a.s) * e; cam.x = a.x + (x - a.x) * e; cam.y = a.y + (y - a.y) * e;
+    world.setAttribute("transform", `translate(${cam.x},${cam.y}) scale(${cam.s})`); $("#pct").textContent = Math.round(cam.s * 100) + "%";
+    if (p < 1) anim = requestAnimationFrame(step); };
+  anim = requestAnimationFrame(step);
+}
+
+/* ---------- input: pointer (mouse drag, touch pan + pinch) ---------- */
+const pts = new Map(); let downNode = null, moved = 0, last = null, pinch = null;
+canvas.addEventListener("pointerdown", e => {
+  cancelAnimationFrame(anim);
+  pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  canvas.setPointerCapture(e.pointerId);
+  if (pts.size === 1) { const g = e.target.closest && e.target.closest(".node"); downNode = g ? g.dataset.id : null; moved = 0; last = { x: e.clientX, y: e.clientY }; }
+  if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), mx: (a.x + b.x) / 2, my: (a.y + b.y) / 2 }; downNode = null; }
+});
+canvas.addEventListener("pointermove", e => {
+  if (!pts.has(e.pointerId)) return;
+  pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (pts.size === 1 && last) {
+    const dx = e.clientX - last.x, dy = e.clientY - last.y; moved += Math.abs(dx) + Math.abs(dy);
+    if (moved > 6) { canvas.classList.add("grabbing"); cam.x += dx; cam.y += dy; apply(); }
+    last = { x: e.clientX, y: e.clientY };
+  } else if (pts.size === 2 && pinch) {
+    const [a, b] = [...pts.values()];
+    const d = Math.hypot(a.x - b.x, a.y - b.y), mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+    cam.x += mx - pinch.mx; cam.y += my - pinch.my;
+    zoomAt(mx, my, d / pinch.d);
+    pinch = { d, mx, my }; moved = 99;
+  }
+});
+function up(e) {
+  if (!pts.has(e.pointerId)) return;
+  pts.delete(e.pointerId);
+  if (pts.size === 0) {
+    canvas.classList.remove("grabbing");
+    if (moved <= 6 && downNode) onTap(downNode);
+    else if (moved <= 6 && !downNode && e.type === "pointerup") closeDrawer();
+    downNode = null; last = null; pinch = null;
+  } else if (pts.size === 1) { const [p] = [...pts.values()]; last = { x: p.x, y: p.y }; pinch = null; }
+}
+canvas.addEventListener("pointerup", up); canvas.addEventListener("pointercancel", up);
+
+/* ---------- input: wheel (trackpad pinch = ctrl+wheel, two-finger scroll = pan, mouse wheel = zoom) ---------- */
+canvas.addEventListener("wheel", e => {
+  e.preventDefault(); cancelAnimationFrame(anim);
+  const r = canvas.getBoundingClientRect(), px = e.clientX - r.left, py = e.clientY - r.top;
+  const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? innerHeight : 1;
+  const dx = e.deltaX * unit, dy = e.deltaY * unit;
+  const mouseWheel = e.deltaMode !== 0 || (e.deltaX === 0 && Math.abs(e.deltaY) >= 50 && Number.isInteger(e.deltaY));
+  if (e.ctrlKey || e.metaKey) zoomAt(px, py, Math.exp(-dy * 0.0105));
+  else if (mouseWheel) zoomAt(px, py, Math.exp(-dy * 0.0016));
+  else { cam.x -= dx; cam.y -= dy; apply(); }
+}, { passive: false });
+
+/* Safari (macOS) trackpad pinch */
+let gScale = 1;
+["gesturestart", "gesturechange", "gestureend"].forEach(t => document.addEventListener(t, e => e.preventDefault(), { passive: false }));
+canvas.addEventListener("gesturestart", e => { gScale = 1; });
+canvas.addEventListener("gesturechange", e => { const r = canvas.getBoundingClientRect(); zoomAt(e.clientX - r.left, e.clientY - r.top, e.scale / gScale); gScale = e.scale; });
+
+canvas.addEventListener("dblclick", e => { const r = canvas.getBoundingClientRect(); if (!e.target.closest(".node")) { const c = { ...cam }; zoomAt(e.clientX - r.left, e.clientY - r.top, 1.6); const t = { ...cam }; Object.assign(cam, c); animateTo(t.s, t.x, t.y, true); } });
+
+/* keyboard */
+canvas.addEventListener("keydown", e => {
+  const r = canvas.getBoundingClientRect(), cx = r.width / 2, cy = r.height / 2;
+  if (e.key === "+" || e.key === "=") zoomAt(cx, cy, 1.25);
+  else if (e.key === "-" || e.key === "_") zoomAt(cx, cy, 0.8);
+  else if (e.key === "0") fit(true);
+  else if (e.key.startsWith("Arrow")) { const k = 60; cam.x += e.key === "ArrowLeft" ? k : e.key === "ArrowRight" ? -k : 0; cam.y += e.key === "ArrowUp" ? k : e.key === "ArrowDown" ? -k : 0; apply(); }
+  else return;
+  e.preventDefault();
+});
+
+/* buttons */
+const centre = () => { const r = canvas.getBoundingClientRect(); return [r.width / 2, r.height / 2]; };
+function zoomBtn(f) { const [cx, cy] = centre(); const c = { ...cam }; zoomAt(cx, cy, f); const t = { ...cam }; Object.assign(cam, c); animateTo(t.s, t.x, t.y, true); }
+$("#zIn").onclick = () => zoomBtn(1.3); $("#zOut").onclick = () => zoomBtn(1 / 1.3);
+$("#pct").onclick = () => { const [cx, cy] = centre(); const c = { ...cam }; zoomAt(cx, cy, 1 / cam.s); const t = { ...cam }; Object.assign(cam, c); animateTo(t.s, t.x, t.y, true); };
+$("#fitBtn").onclick = () => fit(true);
+$("#expAll").onclick = () => { ROOT.children.forEach(b => b.collapsed = false); render(); fit(true); };
+$("#colAll").onclick = () => { ROOT.children.forEach(b => b.collapsed = true); render(); fit(true); };
+
+/* ---------- selection + drawer ---------- */
+function onTap(id) {
+  const n = byId[id];
+  let focus = false;
+  if (n.depth === 1) { n.collapsed = !n.collapsed; focus = !n.collapsed; }
+  select(id, focus);
+}
+function select(id, focus) {
+  const n = byId[id];
+  if (n.depth === 2 && n.parent.collapsed) n.parent.collapsed = false;
+  selected = id; render(); openDrawer(n);
+  if (focus) focusNode(n);
+  try { history.replaceState(null, "", n.key ? "#" + n.key : location.pathname); } catch (e) {}
+}
+function openDrawer(n) {
+  const path = []; let p = n.parent; while (p) { path.unshift(p.label); p = p.parent; }
+  $("#crumb").textContent = path.join(" / ") || "Приложение";
+  let h = `<h2>${esc(n.label)}</h2>`;
+  if (n.status) h += `<div><span class="st ${ST[n.status][1]}">${ST[n.status][0]}</span></div>`;
+  if (n.img) h += `<div class="dr-shot"><img src="${n.img}" alt="Экран: ${esc(n.label)}"></div>`;
+  h += `<p>${esc(n.desc || "")}</p>`;
+  if (n.list) h += `<ul>${n.list.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
+  if (n.depth === 0) h += `<p style="color:var(--ink-3);font-size:14px">Нажмите на раздел, чтобы свернуть или развернуть его. Масштаб: щипок двумя пальцами, жест на тачпаде или Ctrl и колесо мыши.</p>`;
+  if (n.children) h += `<div class="kids">${n.children.map(c => `<button class="kid" data-go="${c.id}"><i style="background:${c.depth === 1 ? c.color : (SC[c.status] || "#B5ADA6")}"></i>${esc(c.label)}</button>`).join("")}</div>`;
+  $("#drBody").innerHTML = h; $("#drBody").scrollTop = 0;
+  document.body.classList.add("drawer-open");
+  $("#hint").classList.add("off");
+}
+function closeDrawer() { document.body.classList.remove("drawer-open"); selected = null; render(); try { history.replaceState(null, "", location.pathname); } catch (e) {} }
+$("#drX").onclick = closeDrawer;
+$("#drBody").addEventListener("click", e => { const b = e.target.closest("[data-go]"); if (b) select(b.dataset.go, true); });
+addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+/* ---------- hint ---------- */
+const touch = matchMedia("(pointer: coarse)").matches;
+$("#hint").textContent = touch ? "Двигайте карту пальцем, приближайте щипком" : "Перетаскивайте карту · масштаб — жест на тачпаде или Ctrl + колесо";
+setTimeout(() => $("#hint").classList.add("off"), 4200);
+
+/* ---------- boot ---------- */
+function boot() {
+  if (innerWidth <= 700) ROOT.children.forEach(b => b.collapsed = true);
+  render(); fit(false);
+  const key = location.hash.slice(1);
+  const b = ROOT.children.find(x => x.key === key);
+  if (b) { ROOT.children.forEach(x => x.collapsed = x !== b); select(b.id, false); render(); fit(false); }
+}
+let resizeT; addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(() => { render(); fit(false); }, 120); });
+addEventListener("hashchange", () => { const b = ROOT.children.find(x => x.key === location.hash.slice(1)); if (b) select(b.id, true); });
+(document.fonts && document.fonts.load ? Promise.all([document.fonts.load(F_ROOT, "Easy"), document.fonts.load(F_BR, "Ура"), document.fonts.load(F_LEAF, "Ура")]) : Promise.resolve()).catch(() => {}).then(boot);
+})();
+</script>
+</body>
+</html>
