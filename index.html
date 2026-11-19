@@ -62,36 +62,31 @@ button{font:inherit;color:inherit}
 
 /* ===== hero ===== */
 .hero{background:var(--card);border-radius:var(--r-xl);padding:clamp(18px,2.4vw,32px);margin-top:4px}
-.hero-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,300px);gap:20px 40px;align-items:start;padding:clamp(4px,1vw,12px) clamp(4px,1vw,12px) clamp(18px,2.4vw,30px)}
+.hero-top{padding:clamp(4px,1vw,12px) clamp(4px,1vw,12px) clamp(18px,2.4vw,30px)}
 .wordmark{font-size:clamp(54px,10.6vw,168px);line-height:.88;letter-spacing:-.055em;font-weight:500;white-space:nowrap}
-.hero-aside{padding-top:clamp(4px,1.6vw,26px);display:flex;flex-direction:column;gap:14px}
-.who{display:flex;align-items:center;gap:10px}
+.who{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .who .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none}
 .who .ln{height:1px;width:34px;background:var(--ink)}
 .who .avs{display:flex}
-.who .avs i{width:22px;height:22px;border-radius:50%;border:2px solid var(--card);margin-left:-6px}
+.who .avs i{width:22px;height:22px;border-radius:50%;border:2px solid var(--cream);margin-left:-6px}
 .who .avs i:first-child{margin-left:0}
-.hero-aside p{font-size:14px;color:var(--ink-2);line-height:1.5}
-.hero-card{position:relative;background:var(--cream);border-radius:var(--r-lg);overflow:hidden;aspect-ratio:1336/560;min-height:340px}
-.hero-card .isl{position:absolute;right:-2%;top:50%;transform:translateY(-50%);height:118%;width:auto;max-width:none}
-.hero-card .cap{position:absolute;left:clamp(18px,2.4vw,32px);bottom:clamp(18px,2.4vw,30px);right:clamp(18px,2.4vw,32px);display:flex;flex-direction:column;gap:18px;pointer-events:none}
-.hero-card .cap p{font-size:14px;line-height:1.45;max-width:30ch;color:var(--ink)}
+/* hero card: text column on cream (left) + illustration inset with its own rounding (right) */
+.hero-card{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:10px;min-height:clamp(440px,40vw,600px)}
+.hero-txt{display:flex;flex-direction:column;justify-content:space-between;gap:40px;background:var(--cream);border-radius:var(--r-lg);padding:clamp(20px,2.4vw,34px)}
+.hero-txt .lead{display:flex;flex-direction:column;gap:18px}
+.hero-txt .lead p{font-size:clamp(15px,1.25vw,17px);color:var(--ink-2);line-height:1.5;max-width:36ch}
+.hero-txt .cap{display:flex;flex-direction:column;gap:18px}
+.hero-txt .cap p{font-size:clamp(18px,1.7vw,24px);line-height:1.25;letter-spacing:-.025em;font-weight:500;color:var(--ink);max-width:22ch}
+.hero-pic{position:relative;border-radius:var(--r-lg);overflow:hidden;background:#BFE3F3}
+.hero-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 66%}
 .tabs{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;font-weight:550;color:var(--ink)}
 .tabs span{display:inline-flex;align-items:center;gap:7px;opacity:.78}
 .tabs svg{width:18px;height:18px}
-.float{position:absolute;right:clamp(14px,2vw,26px);bottom:clamp(14px,2vw,26px);width:clamp(180px,17vw,230px);display:flex;flex-direction:column;gap:6px;z-index:2}
-.float .ph{background:#fff;border-radius:16px;padding:6px;aspect-ratio:1/0.82;overflow:hidden}
-.float .ph img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:11px}
-.float .lab{background:#fff;border-radius:14px;padding:10px 12px;display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:12.5px;line-height:1.3}
-.float .lab b{font-weight:550}
-.float .lab span{color:var(--ink-2)}
-.float .lab .arr{grid-row:1;grid-column:2}
 @media (max-width:860px){
-  .hero-top{grid-template-columns:1fr}
   .wordmark{white-space:normal}
-  .hero-card{aspect-ratio:auto;height:560px}
-  .hero-card .isl{height:auto;width:150%;right:-28%;top:4%;transform:none}
-  .float{display:none}
+  .hero-card{grid-template-columns:1fr;min-height:0}
+  .hero-txt{padding:22px 20px;gap:28px}
+  .hero-pic{aspect-ratio:4/5;min-height:0}
 }
 
 /* ===== about ===== */
@@ -182,10 +177,11 @@ details[open] .pm{transform:rotate(45deg);background:var(--on-dark);color:var(--
 .rc .pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
 .rc .pills .pill{height:30px;font-size:12px;background:rgba(255,255,255,.7);border-color:transparent}
 .rc .meta{display:grid;grid-template-columns:auto auto;gap:4px 28px;font-size:12.5px;text-align:left}
-.rc .meta span{color:var(--ink-2)}
+.rc .meta > span:not(.st){color:var(--ink-2)}
 .rc .meta b{font-weight:550}
 .sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
-.next{background:var(--card);border-radius:var(--r-xl);padding:clamp(20px,2.6vw,36px);display:grid;grid-template-columns:minmax(0,3fr) repeat(2,minmax(0,4fr));gap:20px}
+.next{background:var(--card);border-radius:var(--r-xl);padding:clamp(20px,2.6vw,36px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.next > div:first-child{grid-column:1/-1}
 .next .it{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:16px}
 .next .it b{font-size:22px;font-weight:500;letter-spacing:-.03em}
 .next .it span{color:var(--ink-2);font-size:13.5px}
@@ -193,7 +189,7 @@ details[open] .pm{transform:rotate(45deg);background:var(--on-dark);color:var(--
   .rc{min-height:520px}
   .rc img.isl{width:112%;max-height:none;top:44%}
   .rc .row,.rc .row.bot{flex-direction:column;align-items:flex-start}.rc .top-txt{text-align:left}
-  .next{grid-template-columns:1fr}
+  .next{grid-template-columns:1fr 1fr}
 }
 
 /* ===== process (game loop) ===== */
@@ -262,6 +258,13 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
 .weights small{display:block;font-size:11px;color:var(--ink-3);letter-spacing:0;font-weight:500}
 .card .note{margin-top:22px;color:var(--ink-2);font-size:13px;max-width:52ch}
 .pal{display:flex;flex-direction:column;gap:12px}
+.temp{display:flex;gap:12px;align-items:flex-start;background:#F2B705;color:var(--ink);border-radius:16px;padding:14px 16px;margin-bottom:22px}
+.temp svg{flex:none;width:20px;height:20px;margin-top:1px}
+.temp b{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em}
+.temp span{display:block;font-size:13px;line-height:1.4;margin-top:2px}
+.pal .tones{position:relative}
+.pal .tones::after{content:"";position:absolute;inset:0;border-radius:inherit;background:repeating-linear-gradient(135deg,rgba(255,255,255,.18) 0 6px,transparent 6px 14px);pointer-events:none}
+.tmp-note{font-size:11px;font-weight:550;color:#9A7000;margin-left:4px}
 .pal .row{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:center;gap:12px;font-size:13.5px;font-weight:550}
 .pal .tones{display:flex;height:42px;border-radius:12px;overflow:hidden}
 .pal .tones i{flex:1}
@@ -275,17 +278,21 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
 @media (max-width:900px){.sg{grid-template-columns:1fr}}
 
 /* ===== questions / updates ===== */
-.qs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.qs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.qs .qc:first-child{grid-column:span 2;background:var(--dark);color:var(--on-dark)}
+.qs .qc:first-child p,.qs .qc:first-child .n{color:var(--on-dark-2)}
 .qc{background:var(--card);border-radius:var(--r-md);padding:20px;display:flex;flex-direction:column;gap:10px;min-height:150px}
 .qc .n{font-size:11.5px;color:var(--ink-3);font-weight:550}
 .qc b{font-size:17px;font-weight:550;letter-spacing:-.02em}
 .qc p{font-size:13.5px;color:var(--ink-2)}
 @media (max-width:900px){.qs{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.qs{grid-template-columns:1fr}}
+@media (max-width:520px){.qs{grid-template-columns:1fr}.qs .qc:first-child{grid-column:auto}}
 .ups{border-top:1px solid var(--ink)}
 .up{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,5fr) minmax(0,4fr);gap:12px 24px;padding-block:24px;border-bottom:1px solid var(--line)}
 .up .d{font-size:13px;font-weight:550;color:var(--ink-2)}
-.up .d em{font-style:normal;margin-left:8px;font-size:11px;font-weight:600;color:#fff;background:var(--kyzyl);border-radius:999px;padding:3px 8px}
+.up .d em{font-style:normal;margin-left:8px;font-size:11px;font-weight:600;color:#fff;background:var(--kyzyl);border-radius:999px;padding:3px 8px;white-space:nowrap}
+.up .d em.t-progress{background:#F2B705;color:var(--ink)}
+.up .d em.t-review{background:#7457C4}
 .up h3{font-size:clamp(20px,1.8vw,24px);letter-spacing:-.03em}
 .up ul{margin:0;padding-left:18px;color:var(--ink-2);display:flex;flex-direction:column;gap:4px;font-size:13.5px}
 @media (max-width:860px){.up{grid-template-columns:1fr}}
@@ -318,7 +325,7 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
       <a href="#structure">Структура</a><i>+</i>
       <a href="#regions">Регионы</a><i>+</i>
       <a href="#loop">Цикл</a><i>+</i>
-      <a href="#concept">Концепция</a><i>+</i>
+      <a href="#concept" data-sec="concept">Концепция</a><i data-sec="concept">+</i>
       <a href="#screens">Экраны</a><i>+</i>
       <a href="#updates">Обновления</a>
     </nav>
@@ -331,26 +338,24 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
   <section class="hero">
     <div class="hero-top">
       <h1 class="wordmark">Easy Kyrgyz<span class="reg">®</span></h1>
-      <div class="hero-aside">
-        <div class="who" aria-hidden="true">
-          <span class="av" style="background:var(--kyzyl)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span>
-          <span class="ln"></span>
-          <span class="avs"><i style="background:#D7263D"></i><i style="background:#2DB8E6"></i><i style="background:#00B33F"></i></span>
-          <span class="br" style="margin-left:6px">[ Проектная доска ]</span>
-        </div>
-        <p>Приложение для изучения кыргызского в духе Duolingo. Здесь структура, концепция, экраны и изменения каждой итерации.</p>
-      </div>
     </div>
     <div class="hero-card">
-      <img class="isl" src="img/map-yurts.webp" alt="Иллюстрация: жайлоо с юртами, лошадьми и овцами">
-      <div class="cap">
-        <p>Пять минут в день, путешествие по карте Кыргызстана и свой жайлоо, который растёт вместе с учёбой.</p>
-        <div class="tabs" id="tabs"></div>
+      <div class="hero-txt">
+        <div class="lead">
+          <div class="who" aria-hidden="true">
+            <span class="av" style="background:var(--kyzyl)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span>
+            <span class="ln"></span>
+            <span class="avs"><i style="background:#D7263D"></i><i style="background:#2DB8E6"></i><i style="background:#00B33F"></i></span>
+            <span class="br" style="margin-left:6px">[ Проектная доска ]</span>
+          </div>
+          <p>Приложение для изучения кыргызского в духе Duolingo. Здесь структура, концепция, экраны и изменения каждой итерации.</p>
+        </div>
+        <div class="cap">
+          <p>Пять минут в день, путешествие по карте Кыргызстана и свой жайлоо, который растёт вместе с учёбой.</p>
+          <div class="tabs" id="tabs"></div>
+        </div>
       </div>
-      <a class="float" href="#screens">
-        <span class="ph"><img src="img/06.webp" alt="Главный экран, регион Чуй"></span>
-        <span class="lab"><b>Главная · Чуй</b><svg class="arr" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l6-6M4 3h5v5"/></svg><span id="floatIter"></span></span>
-      </a>
+      <div class="hero-pic"><img src="img/hero-jailoo.webp" alt="Иллюстрация: юрта на жайлоо у реки, овцы и лошадь на фоне снежных гор"></div>
     </div>
   </section>
 
@@ -366,12 +371,12 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
       <div><div class="k">Экранов в драфте</div><div class="big num" style="margin-top:8px">23</div></div>
     </div>
     <div class="bx dark">
-      <div class="k">Регионов на карте</div>
+      <div class="k">Областей на карте</div>
       <svg class="badge" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text font-size="8.2" font-weight="550" letter-spacing="1.6" fill="#F4F3F0"><textPath href="#circ">EASY KYRGYZ · КАРТА РЕГИОНОВ · 2026 ·</textPath></text><path d="M50 36l3.9 8.3 9.1 1.1-6.7 6.3 1.7 9-8-4.4-8 4.4 1.7-9-6.7-6.3 9.1-1.1z" fill="#F4F3F0"/></svg>
-      <div><div class="big num">5</div><p style="margin-top:12px">Бишкек, Иссык-Куль, Нарын, Ош и Талас. У каждого региона свой цвет интерфейса.</p></div>
+      <div><div class="big num">7</div><p style="margin-top:12px">Все области Кыргызстана, от Чуя до Баткена. У каждой свой цвет интерфейса.</p></div>
     </div>
     <div class="bx">
-      <p>Выбор картинки, сборка фразы, аудирование и поиск пар. Урок — 12 заданий примерно на пять минут.</p>
+      <p>Выбор картинки, сборка фразы, аудирование и поиск пар. Урок — условно 12–20 заданий примерно на пять минут.</p>
       <div class="bx-row"><div><div class="k">Типа заданий</div><div class="big num" style="margin-top:8px">4</div></div><div class="mini"><img src="img/09.webp" alt="Экран урока"></div></div>
     </div>
     <div class="bx img">
@@ -398,8 +403,8 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
   <section class="sec" id="regions">
     <div class="head">
       <span class="tag">Маршрут по карте</span>
-      <h2>Каждый регион — раздел уроков со своей историей</h2>
-      <p>Вместо цепочки уровней ученик путешествует по стране. Проходя регион, он открывает следующий и узнаёт его легенды и традиции.</p>
+      <h2>Все области Кыргызстана на одной карте</h2>
+      <p>Вместо цепочки уровней ученик путешествует по всем семи областям страны. Проходя одну, он открывает следующую и узнаёт её легенды и традиции.</p>
     </div>
     <div class="showcase" id="showcase"></div>
   </section>
@@ -416,7 +421,7 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
   </section>
 
   <!-- CONCEPT -->
-  <section class="sec" id="concept">
+  <section class="sec" id="concept" data-sec="concept">
     <div class="head">
       <span class="tag">Концепция</span>
       <h2>Шесть идей обновлённого приложения</h2>
@@ -441,7 +446,7 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
     <div class="head">
       <span class="tag">Визуальный язык</span>
       <h2>Шрифт, цвета регионов и кнопки</h2>
-      <p>Красный и бежевый, объёмные кнопки и кыргызский орнамент. Цвет кнопок и активных состояний меняется вместе с регионом.</p>
+      <p>Объёмные кнопки и кыргызский орнамент. Цвет кнопок и активных состояний меняется вместе с регионом. Текущая палитра временная и будет пересмотрена.</p>
     </div>
     <div class="sg">
       <div class="card">
@@ -458,7 +463,8 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
         <p class="note">Переменный шрифт DNF Studio под лицензией SIL Open Font License: веса от 100 до 900, кириллица с буквами ң, ө, ү.</p>
       </div>
       <div class="card">
-        <span class="k">Цвета регионов · из переменных Figma</span>
+        <div class="temp" role="note"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 5.5v5.2M10 13.8v.2"/></svg><div><b>Временная палитра</b><span>Цвета пока рабочие и будут пересмотрены. До утверждения новой палитры работаем с текущей.</span></div></div>
+        <span class="k">Цвета регионов · из переменных Figma · временные</span>
         <div class="pal" id="pal"></div>
         <div class="sys" id="sys"></div>
         <div class="btns" aria-hidden="true">
@@ -471,7 +477,7 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
   </section>
 
   <!-- QUESTIONS -->
-  <section class="sec" id="questions">
+  <section class="sec" id="questions" data-sec="questions">
     <div class="head">
       <span class="tag">Нужно решение</span>
       <h2>Открытые вопросы</h2>
@@ -501,8 +507,8 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
         <p>Проектная доска команды дизайна. Обновляется каждую итерацию, ссылка не меняется.</p>
         <a class="mail" href="map.html">Открыть майнд-карту</a>
       </div>
-      <div><h4>Доска</h4><ul><li><a href="#structure">Структура</a></li><li><a href="#regions">Регионы</a></li><li><a href="#loop">Игровой цикл</a></li><li><a href="#concept">Концепция</a></li></ul></div>
-      <div><h4>Дизайн</h4><ul><li><a href="#screens">Экраны</a></li><li><a href="#style">Стиль</a></li><li><a href="#questions">Вопросы</a></li><li><a href="#updates">Обновления</a></li></ul></div>
+      <div><h4>Доска</h4><ul><li><a href="#structure">Структура</a></li><li><a href="#regions">Регионы</a></li><li><a href="#loop">Игровой цикл</a></li><li data-sec="concept"><a href="#concept">Концепция</a></li></ul></div>
+      <div><h4>Дизайн</h4><ul><li><a href="#screens">Экраны</a></li><li><a href="#style">Стиль</a></li><li data-sec="questions"><a href="#questions">Вопросы</a></li><li><a href="#updates">Обновления</a></li></ul></div>
       <div><h4>Регионы</h4><ul id="footRegions"></ul></div>
     </div>
     <div class="foot-bot"><span id="footIter"></span><a class="up-btn" href="#top" aria-label="Наверх"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 10V2M2.5 5.5L6 2l3.5 3.5"/></svg></a></div>
@@ -535,10 +541,9 @@ const ICON = {
   book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 4h14v13H9l-4 3z"/><path d="M9 9h6M9 12.5h4"/></svg>',
   user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>',
 };
-const TABS = [["map", "Карта"], ["home", "Жайлоо"], ["team", "Уруу"], ["book", "Знания"], ["user", "Профиль"]];
+const TABS = [["map", "Карта"], ["home", "Жайлоо"], ["team", "Тайпа"], ["book", "Знания"], ["user", "Профиль"]];
 
 const it = D.iteration;
-$("#floatIter").textContent = `Итерация ${it.n} · ${it.date}`;
 $("#footYear").textContent = "© 2026";
 $("#footIter").textContent = `Итерация ${it.n} · обновлено ${it.date}`;
 $("#tabs").innerHTML = TABS.map(([i, t]) => `<span>${ICON[i]}${t}</span>`).join("");
@@ -566,17 +571,20 @@ const withImg = D.regions.filter(r => r.img), rest = D.regions.filter(r => !r.im
 $("#showcase").innerHTML = withImg.map(r => `<article class="rc"><img class="isl" loading="lazy" src="${r.img}" alt="Иллюстрация региона ${esc(r.t)}">
   <div class="row"><span class="tag">Регион ${String(r.n).padStart(2, "0")}</span><p class="top-txt">${esc(r.d)}</p></div>
   <div class="row bot"><div><h3>${esc(r.t)}</h3><div class="pills">${r.lessons ? `<span class="pill">${r.lessons}</span>` : `<span class="pill">Уроки в работе</span>`}${r.tones ? `<span class="pill"><i class="sw" style="background:${r.tones[0]}"></i>${r.tones[0]}</span>` : ""}</div></div>
-  <div class="meta lt"><span>Статус</span><span>Цвет</span>${st(r.status)}<b><i class="sw" style="background:${r.tones[0]}"></i>${["Красный", "Голубой", "Зелёный"][r.n - 1] || ""}</b></div></div></article>`).join("")
+  <div class="meta lt"><span>Статус</span><span>Цвет <span class="tmp-note">временный</span></span>${st(r.status)}<b><i class="sw" style="background:${r.tones[0]}"></i>${["Красный", "Голубой", "Зелёный"][r.n - 1] || ""}</b></div></div></article>`).join("")
   + `<div class="next"><div><span class="tag">Дальше по маршруту</span></div>${rest.map(r => `<div class="it"><span class="num">Регион ${String(r.n).padStart(2, "0")}</span><b>${esc(r.t)}</b><span>${esc(r.d)}. Цвет и уроки ещё не определены.</span></div>`).join("")}</div>`;
 
 /* loop */
 $("#proc").innerHTML = D.loop.map((x, i) => `<div class="col"><div class="bar" style="top:${12 + i * 18}%">${esc(x.t)}</div><span class="n num">0${i + 1}</span></div>`).join("");
 $("#procCards").innerHTML = D.loop.map(x => `<div class="pc"><b>${esc(x.t)}</b><span>${esc(x.d)}</span></div>`).join("");
 
+/* archived sections: hide block and its links (data.js → sections) */
+Object.entries(D.sections || {}).forEach(([k, on]) => { if (!on) document.querySelectorAll(`[data-sec="${k}"]`).forEach(el => el.hidden = true); });
+
 /* concept bento */
 $("#cb").innerHTML = `<div class="lead"><div><div class="k">Концепция</div></div>
   <svg class="badge" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="circ2" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text font-size="8.2" font-weight="550" letter-spacing="1.6" fill="#F4F3F0"><textPath href="#circ2">ДРАФТ ДЛЯ ОБСУЖДЕНИЯ · ОКТЯБРЬ 2026 ·</textPath></text><path d="M50 36l3.9 8.3 9.1 1.1-6.7 6.3 1.7 9-8-4.4-8 4.4 1.7-9-6.7-6.3 9.1-1.1z" fill="#F4F3F0"/></svg>
-  <div><div class="big num">6<small>идей</small></div><p style="margin-top:14px">Карта страны вместо уровней, жайлоо вместо цифр, группы для школ и вузов, регулярные экзамены, праздники в уроках и маскот-барс.</p></div>
+  <div><div class="big num">6<small>идей</small></div><p style="margin-top:14px">Карта страны вместо уровней, жайлоо вместо цифр, группы для школ и вузов, регулярные экзамены, праздники в уроках и маскот-беркут.</p></div>
   <a class="pill pill-light" style="align-self:flex-start" href="#regions">Смотреть регионы ${ARR}</a></div>`
   + D.ideas.map((x, i) => `<article class="idea"><span class="q num">${String(i + 1).padStart(2, "0")}</span><h3>${esc(x.t)}</h3><p>${esc(x.d)}</p></article>`).join("");
 
@@ -595,7 +603,8 @@ $("#pal").innerHTML = D.regions.filter(r => r.tones).map(r => `<div class="row">
 $("#sys").innerHTML = D.system.map(s => `<span><i style="background:${s.c}"></i>${esc(s.t)} <small>${esc(s.d)}</small></span>`).join("");
 
 $("#qs").innerHTML = D.questions.map((q, i) => `<div class="qc"><span class="n num">Вопрос ${String(i + 1).padStart(2, "0")}</span><b>${esc(q.t)}</b><p>${esc(q.d)}</p></div>`).join("");
-$("#ups").innerHTML = D.updates.map((u, i) => `<article class="up"><div class="d">${esc(u.date)}${i === 0 ? "<em>новое</em>" : ""}</div><h3>${esc(u.t)}</h3><ul>${u.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul></article>`).join("");
+const TAG = { new: "новое", progress: "в процессе", review: "на рассмотрении" };
+$("#ups").innerHTML = D.updates.map(u => `<article class="up"><div class="d">${esc(u.date)}${u.tag ? `<em class="t-${u.tag}">${TAG[u.tag]}</em>` : ""}</div><h3>${esc(u.t)}</h3><ul>${u.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul></article>`).join("");
 $("#footRegions").innerHTML = D.regions.map(r => `<li>${esc(r.t)}</li>`).join("");
 
 /* lightbox */
