@@ -369,7 +369,7 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
   <div class="bento" data-sec="stats">
     <div class="bx">
       <div class="thumbs" id="thumbs"></div>
-      <div><div class="k">Экранов в дизайне v2</div><div class="big num" style="margin-top:8px" id="screenCount">42</div></div>
+      <div><div class="k">Экранов в дизайне v2</div><div class="big num" style="margin-top:8px" id="screenCount">39</div></div>
     </div>
     <div class="bx dark">
       <div class="k">Областей на карте</div>
@@ -436,7 +436,7 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
   <section class="sec" id="screens">
     <div class="head">
       <span class="tag">Дизайн v2</span>
-      <h2>42 экрана в новой дизайн-системе</h2>
+      <h2>39 экранов в новой дизайн-системе</h2>
       <p>Нажмите на экран, чтобы открыть его крупно. Все экраны собраны на общих компонентах, в палитре «Асман» и шрифте Medeo Sans Display. Иллюстрации персонажей пока заглушки.</p>
     </div>
     <div id="flows"></div>
@@ -526,7 +526,7 @@ dialog.lb::backdrop{background:rgba(17,17,17,.78);backdrop-filter:blur(6px)}
   </div>
 </dialog>
 
-<script src="data.js?v=20261124160803"></script>
+<script src="data.js?v=20261124163546"></script>
 <script>
 const D = window.EK;
 const $ = s => document.querySelector(s);
@@ -555,7 +555,7 @@ const SCREENS = [];
 D.screens.forEach(f => f.items.forEach(c => SCREENS.push({ ...c, group: f.t })));
 $("#screenCount").textContent = SCREENS.length;
 
-$("#thumbs").innerHTML = [0, 4, 6, 16, 21, 27, 33, 34, 39, 41].map(i => SCREENS[i]).filter(Boolean).map(s => `<i style="background-image:url(${s.img})"></i>`).join("");
+$("#thumbs").innerHTML = [0, 4, 6, 16, 19, 27, 30, 31, 36, 38].map(i => SCREENS[i]).filter(Boolean).map(s => `<i style="background-image:url(${s.img})"></i>`).join("");
 
 /* structure accordion */
 $("#acc").innerHTML = D.map.children.map((b, i) => {
